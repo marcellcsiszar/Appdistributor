@@ -53,7 +53,8 @@ gem 'bson_ext'
 
 # Bootstrap for SWAG
 group :assets do
-	gem 'bootstrap-sass'
+	gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
+	gem 'twitter-bootstrap-rails'
 end
 
 # The recommended doorkeeper for OAuth

@@ -5,6 +5,9 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  ## Name field
+  field :name,               :type => String
+
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
@@ -22,6 +25,10 @@ class User
   field :last_sign_in_at,    :type => Time
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
+
+  #Validations
+  validates_presence_of :name
+  validates_uniqueness_of :name, :email, :case_sensitive => false
 
   ## Confirmable
   # field :confirmation_token,   :type => String
