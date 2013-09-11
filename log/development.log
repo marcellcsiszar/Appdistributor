@@ -1,0 +1,16 @@
+Overwriting existing field application_id in class Doorkeeper::AccessGrant.
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-11 04:08:58 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/marcell.csiszar/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 200ms (Views: 131.2ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2013-09-11 04:09:02 +0200
+Processing by Rails::InfoController#properties as */*
+  Rendered /home/marcell.csiszar/.rvm/gems/ruby-2.0.0-p247@global/gems/railties-4.0.0/lib/rails/templates/rails/info/properties.html.erb (0.9ms)
+Completed 200 OK in 44ms (Views: 33.9ms)
+Overwriting existing field application_id in class Doorkeeper::AccessGrant.
+Overwriting existing field application_id in class Doorkeeper::AccessGrant.
+Overwriting existing field application_id in class Doorkeeper::AccessGrant.

@@ -1,6 +1,4 @@
 == Distror
 Ruby on Rails app for package distribution
 
-== Modells
-
-Account: egy OAuth pärositott accountot reprezental
+==
