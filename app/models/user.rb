@@ -27,7 +27,6 @@ class User
   field :last_sign_in_ip,    :type => String
 
   #Validations
-  validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
 
   ## Confirmable
