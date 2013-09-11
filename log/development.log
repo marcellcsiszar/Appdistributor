@@ -14,3 +14,5 @@ Completed 200 OK in 44ms (Views: 33.9ms)
 Overwriting existing field application_id in class Doorkeeper::AccessGrant.
 Overwriting existing field application_id in class Doorkeeper::AccessGrant.
 Overwriting existing field application_id in class Doorkeeper::AccessGrant.
+Overwriting existing field application_id in class Doorkeeper::AccessGrant.
+Overwriting existing field application_id in class Doorkeeper::AccessGrant.
