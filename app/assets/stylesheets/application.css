@@ -12,3 +12,9 @@
  *= require_self
  *= require_tree
  */
+.navbar .brand img{
+    max-height: 24px;
+    overflow: visible;
+    padding-top: 0;
+    padding-bottom: 0;
+}
