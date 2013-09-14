@@ -1,0 +1,2 @@
+module Uploader::DashboardHelper
+end

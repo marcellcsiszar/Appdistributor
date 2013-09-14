@@ -1,15 +1,35 @@
 Distror::Application.routes.draw do
-  get "welcome/index"
+  get "dashboard/index"
 
   devise_for :admins
   devise_for :users
   devise_for :uploaders
+  resources :dashboard
   use_doorkeeper
+
+  authenticated :user do
+    root :to => "user/dashboard#index", :as => "authenticated_user_root"
+    # Rails 4 users must specify the 'as' option to give it a unique name
+    # root :to => "main#dashboard", :as => "authenticated_root"
+  end
+
+  authenticated :uploader do
+    root :to => "uploader/dashboard#index", :as => "authenticated_uploader_root"
+    # Rails 4 users must specify the 'as' option to give it a unique name
+    # root :to => "main#dashboard", :as => "authenticated_root"
+  end
+
+  authenticated :admin do
+    root :to => "admin/dashboard#index", :as => "authenticated_admin_root"
+    # Rails 4 users must specify the 'as' option to give it a unique name
+    # root :to => "main#dashboard", :as => "authenticated_root"
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'dashboard#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
