@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Distror::Application.load_tasks
+Appdistributor::Application.load_tasks
