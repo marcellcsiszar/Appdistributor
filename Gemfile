@@ -62,6 +62,10 @@ end
 # The recommended doorkeeper for OAuth
 gem 'doorkeeper', '~> 0.7.1'
 
+# Use dragonfly for file uploads
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly', '~>0.9.15'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
