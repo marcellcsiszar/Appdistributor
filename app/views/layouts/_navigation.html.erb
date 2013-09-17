@@ -1,4 +1,11 @@
-<%= link_to image_tag("jbs-logo.png", :alt => "Appdistributor"), root_path, :class => 'brand' %>
+<%= link_to "Appdistributor", root_path, :class => 'brand' %>
+<% if user_signed_in? %>
+<ul class="nav">
+<li>
+    <%= link_to('Customers', "/customers")  %>
+</li>
+</ul>
+<% end %>
 <ul class="nav pull-right">
   <% if user_signed_in? %>
         <li>

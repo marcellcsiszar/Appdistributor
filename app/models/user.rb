@@ -26,8 +26,11 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
-  #Validations
+  # Validations
   validates_uniqueness_of :name, :email, :case_sensitive => false
+
+  # N-N Relationship between Customers
+  has_and_belongs_to_many :customers
 
   ## Confirmable
   # field :confirmation_token,   :type => String

@@ -1,0 +1,39 @@
+<h1>Listing customers</h1>
+
+<h2><%= link_to 'New Customer', new_customer_path, :class => 'btn btn-info icon' %></h2>
+
+<table>
+  <tbody>
+    <ul class="thumbnails">
+      <% @customers.each do |customer| %>
+      <li class="span5 clearfix">
+        <div class="thumbnail clearfix">
+          <div class="row customerbox">
+
+          <%- if customer.image_uid %>
+            <%= image_tag(customer.image.thumb('200x200').url, :alt => customer.name, :class => "pull-left span2 clearfix img-polaroid", :style => 'margin-right:10px') %>
+          <%- else %>
+            <%= image_tag("http://placehold.it/200x200", :alt => customer.name, :class => "pull-left span2 clearfix img-polaroid", :style => 'margin-right:10px') %>
+          <% end %>
+
+          <div class="caption">
+            <h4>
+            <%= link_to customer.name, customer %>
+            </h4>
+            <small><strong>ID: </strong><%= customer.id %></small>
+          </div>
+
+          <ul class="span1 pull-right">
+            <li><%= link_to 'Info', customer, :class => 'btn btn-info icon  pull-right' %></li>
+            <li><%= link_to 'Edit', edit_customer_path(customer), :class => 'btn btn-inverse icon  pull-right' %></li>
+            <li><%= link_to 'Delete', customer,method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger icon  pull-right' %></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+  </tbody>
+</table>
+
+<br>

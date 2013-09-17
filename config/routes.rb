@@ -4,6 +4,9 @@ Appdistributor::Application.routes.draw do
   devise_for :admins
   devise_for :users
   resources :dashboard
+  resources :customers do
+    resources :users
+  end
   use_doorkeeper
 
   authenticated :user do
