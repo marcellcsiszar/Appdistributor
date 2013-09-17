@@ -70,6 +70,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params[:customer].permit(:name,:image,:users,:image_uid,:remove_image)
+      params[:customer].permit(:name,:image,:image_uid,:remove_image,:user_ids => [])
     end
 end

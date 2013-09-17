@@ -66,6 +66,8 @@ gem 'doorkeeper', '~> 0.7.1'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.15'
 
+# For Forms
+gem 'simple_form'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
