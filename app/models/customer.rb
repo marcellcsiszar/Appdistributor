@@ -5,4 +5,5 @@ class Customer
   field :image_uid, :type => String
   image_accessor :image
   has_and_belongs_to_many :users
+  has_many :projects
 end

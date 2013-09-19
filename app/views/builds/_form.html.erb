@@ -1,0 +1,11 @@
+<%= simple_form_for([@project,@build]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+  	<%= f.file_field :package %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<%= simple_form_for(@project) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+  	<label>Name</label>
+    <%= f.text_field :name %>
+    <%= f.association :customer, :collection => Customer.all, value_method: :_id, include_blank: false %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

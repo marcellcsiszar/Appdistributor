@@ -7,6 +7,11 @@ Appdistributor::Application.routes.draw do
   resources :customers do
     resources :users
   end
+  resources :projects do
+    resources :customers
+    resources :builds, only: [:new, :create]
+  end
+
   use_doorkeeper
 
   authenticated :user do
