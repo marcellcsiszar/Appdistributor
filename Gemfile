@@ -36,12 +36,14 @@ end
 
 group :development, :test do
 	gem "rspec-rails"
+	gem 'debugger'
 end
 
 group :test do
 	gem 'cucumber-rails', :require => false
 	gem 'database_cleaner'
 	gem 'mongoid-rspec'
+
 end
 
 # Devise for auth
@@ -68,6 +70,19 @@ gem 'dragonfly', '~>0.9.15'
 
 # For Forms
 gem 'simple_form'
+
+# Perform some Android analysis
+gem 'ruby_apk'
+
+# Perform some iOS analysis
+gem "ipa"
+
+# Perform Zip commands
+gem 'rubyzip',  "~> 0.9.9"
+
+# To perform copy-to-clipboard
+gem 'zeroclipboard-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,4 +1,6 @@
 class BuildsController < ApplicationController
+  require 'ruby_apk'
+  require 'ipa'
   before_action :set_build, only: [:show, :edit, :update, :destroy]
   # GET /builds
   # GET /builds.json
@@ -26,6 +28,31 @@ class BuildsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @build = @project.builds.build(build_params)
+    @build.platform = if @build.package.mime_type == "application/vnd.android.package-archive"
+    then "Android" elsif @build.package.mime_type == "application/octet-stream"; then "iOS" else "@build.package.mime_type" end
+    if @build.platform == "Android"
+      @apk = Android::Apk.new(@build.package.file)
+      @build.bundleID = @apk.manifest.package_name
+      @build.icon = @apk.icon.values.last
+      @build.version = @apk.manifest.version_code
+      @build.packagename = @apk.resource.find(@apk.manifest.label)
+      @build.taken = @apk.time
+    elsif @build.platform == "iOS"
+      @ipa = IPA::IPAFile.new(@build.package.file);
+      @build.bundleID = @ipa.identifier
+      begin
+        @build.icon = @ipa.artwork
+        rescue Errno::ENOENT
+        @build.icon_url = "http://placehold.it/50x50"
+      end
+      #@build.icon = Zip::ZipFile.new(@build.package.file).read("Payload/"+@ipa.display_name.to_s+".app/"+@ipa.icon_paths.first.to_s+".png") if @ipa.icon_path
+      #@build.icon = Zip::ZipFile.new(@build.package.file).read("Payload/"+@ipa.display_name.to_s+".app/"+@ipa.icon_path.to_s+".png") if @ipa.icon_path
+      @build.version = @ipa.version_string
+      @build.packagename = @ipa.display_name
+      @build.taken = File.ctime(@build.package.file)
+    end
+
+
     respond_to do |format|
       if @build.save
         format.html { redirect_to @project, notice: 'Build was successfully created.' }

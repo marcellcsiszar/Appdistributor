@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin name="doubleA.fr Skin" version="1.0">
+    <Portrait>
+        <button height="35" id="Previous"
+            imgDisabled="PreviousTrackDisabled.png"
+            imgHighlighted="PreviousTrackPressed.png"
+            imgNormal="PreviousTrack.png"
+            imgSelected="PreviousTrackPressed.png" width="65" x="25" y="277"/>
+        <button height="35" id="Stop" imgDisabled="StopDisabled.png"
+            imgHighlighted="StopPressed.png" imgNormal="Stop.png"
+            imgSelected="StopPressed.png" width="46" x="105" y="277"/>
+        <button Attr_imgAlternate1Highlighted="PausePressed.png"
+            height="35" id="PlayPause" imgAlternate1="Pause.png"
+            imgDisabled="PlayDisabled.png"
+            imgHighlighted="PlayPressed.png" imgNormal="PlayHot.png"
+            imgSelected="PlayPressed.png" width="40" x="175" y="277"/>
+        <button height="35" id="Next"
+            imgDisabled="NextTrackDisabled.png"
+            imgHighlighted="NextTrackPressed.png"
+            imgNormal="NextTrack.png" imgSelected="NextTrackPressed.png"
+            width="65" x="235" y="277"/>
+        <button height="25" id="VolumeLess"
+            imgHighlighted="VolumeLessPressed.png"
+            imgNormal="VolumeLess.png" width="26" x="9" y="337"/>
+        <button height="21" id="VolumeMore"
+            imgHighlighted="VolumeMorePressed.png"
+            imgNormal="VolumeMore.png" width="21" x="288" y="339"/>
+        <button height="20" id="SkipBack"
+            imgHighlighted="SkipBackPressed.png"
+            imgNormal="SkipBack.png" width="20" x="11" y="21"/>
+        <button height="20" id="SkipForward"
+            imgHighlighted="SkipForwardPressed.png"
+            imgNormal="SkipForward.png" width="20" x="290" y="21"/>
+        <button height="30" hidden="1" id="Shuffle"/>
+        <button height="30" hidden="1" id="Repeat"/>
+        <button height="30" hidden="1" id="Loop"/>
+        <slider height="35" id="VolumeSlider" sliderCapWidth="10"
+            sliderMaxTrack="sliderMaxTrack.png"
+            sliderMinTrack="sliderMinTrack.png"
+            sliderThumb="sliderThumb.png" width="246" x="37" y="332"/>
+        <slider height="35" id="PositionSlider" sliderCapWidth="10"
+            sliderMaxTrack="sliderMaxTrack.png"
+            sliderMinTrack="sliderMinTrack.png"
+            sliderThumb="sliderThumb.png" width="246" x="37" y="14"/>
+        <table fontSize="13" height="199" hidden="0" id="Table"
+            rowBackground="RowBackgroundPortrait.png"
+            rowBackgroundHighlighted="RowBackgroundPortraitPressed.png"
+            textColour="1,1,1,0.8" textHighlightedColour="1,1,1,1"
+            width="320" x="0" y="63"/>
+        <label hidden="1" id="Status"/>
+        <label hidden="1" id="NowPlaying"/>
+        <label height="12" id="TimeElapsed" width="50" x="39" y="10"/>
+        <label height="12" id="TimeRemaining" width="50" x="233" y="10"/>
+        <label height="12" id="TimeLength" width="50" x="135" y="10"/>
+        <image height="372" hidden="0" id="Background"
+            imgNormal="BackgroundPortrait.png" width="320" x="0" y="0"/>
+    </Portrait>
+    <Landscape>
+        <button height="64" id="Previous"
+            imgDisabled="PreviousTrackDisabled.png"
+            imgHighlighted="PreviousTrackPressed.png"
+            imgNormal="PreviousTrack.png"
+            imgSelected="PreviousTrackPressed.png" width="64" x="37" y="57"/>
+        <button height="64" id="Stop" imgDisabled="StopDisabled.png"
+            imgHighlighted="StopPressed.png" imgNormal="Stop.png"
+            imgSelected="StopPressed.png" width="64" x="146" y="58"/>
+        <button Attr_imgAlternate1Highlighted="PausePressed.png"
+            height="64" id="PlayPause" imgAlternate1="Pause.png"
+            imgDisabled="PlayDisabled.png"
+            imgHighlighted="PlayPressed.png" imgNormal="PlayHot.png"
+            imgSelected="PlayPressed.png" width="64" x="270" y="58"/>
+        <button height="64" id="Next"
+            imgDisabled="NextTrackDisabled.png"
+            imgHighlighted="NextTrackPressed.png"
+            imgNormal="NextTrack.png" imgSelected="NextTrackPressed.png"
+            width="64" x="376" y="57"/>
+        <button height="46" id="VolumeLess"
+            imgHighlighted="VolumeLessPressed.png"
+            imgNormal="VolumeLess.png" width="46" x="6" y="177"/>
+        <button height="46" id="VolumeMore"
+            imgHighlighted="VolumeMorePressed.png"
+            imgNormal="VolumeMore.png" width="46" x="428" y="176"/>
+        <button height="46" id="SkipBack" imgNormal="SkipBack.png"
+            imgSelected="SkipBackPressed.png" width="46" x="8" y="6"/>
+        <button height="46" id="SkipForward" imgNormal="SkipForward.png"
+            imgSelected="SkipForwardPressed.png" width="46" x="423" y="6"/>
+        <button height="30" hidden="0" id="Shuffle"
+            imgNormal="Shuffle.png" imgSelected="ShufflePressed.png"
+            width="46" x="157" y="128"/>
+        <button height="30" hidden="0" id="Repeat"
+            imgNormal="Repeat.png" imgSelected="RepeatPressed.png"
+            width="46" x="217" y="128"/>
+        <button height="30" hidden="0" id="Loop" imgNormal="Loop.png"
+            imgSelected="LoopPressed.png" width="46" x="277" y="128"/>
+        <slider height="23" id="VolumeSlider" sliderCapWidth="10"
+            sliderMaxTrack="sliderMaxTrack.png"
+            sliderMinTrack="sliderMinTrack.png"
+            sliderThumb="sliderThumb.png" width="374" x="50" y="187"/>
+        <slider height="23" id="PositionSlider" sliderCapWidth="10"
+            sliderMaxTrack="sliderMaxTrack.png"
+            sliderMinTrack="sliderMinTrack.png"
+            sliderThumb="sliderThumb.png" width="374" x="50" y="17"/>
+        <table hidden="1" id="Table"/>
+        <label hidden="1" id="Status"/>
+        <label hidden="1" id="NowPlaying"/>
+        <label height="12" id="TimeElapsed" width="50" x="53" y="8"/>
+        <label height="12" id="TimeRemaining" width="50" x="372" y="8"/>
+        <label height="12" id="TimeLength" width="50" x="207" y="8"/>
+        <image height="223" hidden="0" id="Background"
+            imgNormal="BackgroundLandscape.png" width="480" x="0" y="0"/>
+    </Landscape>
+</skin>

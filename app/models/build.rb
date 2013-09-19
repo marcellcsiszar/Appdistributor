@@ -10,7 +10,7 @@ class Build
   file_accessor :package
   field :package_uid, :type => String
   field :taken, :type => Time
-  #validates_presence_of :package
-  #validates_property :format, :of => :package, :in => [:apk, :ipa]
+  validates_presence_of :package
+  validates_property :format, :of => :package, :in => [:apk, :ipa]
   #validates_uniqueness_of :version
 end

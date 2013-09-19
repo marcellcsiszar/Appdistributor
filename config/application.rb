@@ -7,6 +7,7 @@ require "action_mailer/railtie"
 require "sprockets/railtie"
 require "twitter-bootstrap-rails"
 require "bootstrap-sass"
+# require 'ruby_apk'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
