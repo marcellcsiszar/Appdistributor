@@ -1,4 +1,5 @@
 class BuildsController < ApplicationController
+  before_filter :authenticate_user!
   require 'ruby_apk'
   require 'ipa'
   before_action :set_build, only: [:show, :edit, :update, :destroy]
@@ -42,7 +43,7 @@ class BuildsController < ApplicationController
       @build.bundleID = @ipa.identifier
       begin
         @build.icon = @ipa.artwork
-        rescue Errno::ENOENT
+      rescue Errno::ENOENT
         @build.icon_url = "http://placehold.it/50x50"
       end
       #@build.icon = Zip::ZipFile.new(@build.package.file).read("Payload/"+@ipa.display_name.to_s+".app/"+@ipa.icon_paths.first.to_s+".png") if @ipa.icon_path
@@ -89,13 +90,13 @@ class BuildsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_build
-      @build = Build.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_build
+    @build = Build.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def build_params
-      params[:build].permit(:package,:package_uid,:icon,:icon_uid,:taken,:project,:platform,:version,:bundleID,:packagename)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def build_params
+    params[:build].permit(:package,:package_uid,:icon,:icon_uid,:taken,:project,:platform,:version,:bundleID,:packagename)
+  end
 end

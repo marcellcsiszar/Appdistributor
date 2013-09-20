@@ -1,6 +1,4 @@
 Appdistributor::Application.routes.draw do
-  get "dashboard/index"
-
   devise_for :admins
   devise_for :users
   resources :dashboard
