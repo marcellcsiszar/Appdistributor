@@ -3,34 +3,26 @@ body {
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px;
-}
+  line-height: 18px; }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px;
-}
+  line-height: 18px; }
 
 ul {
-  list-style: none;
-}
-
+  list-style: none; }
 
 .thumbnail .caption {
-  padding : 0;
-  overflow: hidden;
-  h4 {
-    margin : 0;
-  }
-}
-
+  padding: 0;
+  overflow: hidden; }
+  .thumbnail .caption h4 {
+    margin: 0; }
 
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px;
-}
+  font-size: 11px; }
 
 /*a {
   &:visited {
@@ -40,22 +32,16 @@ pre {
     color: #fff;
   }
 }*/
-
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
-}
+div.field, div.actions {
+  margin-bottom: 10px; }
 
 #notice {
-  color: green;
-}
+  color: green; }
 
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table;
-}
+  display: table; }
 
 #error_explanation {
   width: 450px;
@@ -63,8 +49,8 @@ div {
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
-  h2 {
+  background-color: #f0f0f0; }
+  #error_explanation h2 {
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
@@ -72,58 +58,37 @@ div {
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
-    color: #fff;
-  }
-}
+    color: #fff; }
 
 #namelist label {
-        display: inline;
-}
+  display: inline; }
 
 .customerbox {
-  ul {
-  position: absolute;
-  bottom:0;
-  right:0;
-  }
-  position: relative;
-}
-
-.caption {
-
-}
+  position: relative; }
+  .customerbox ul {
+    position: absolute;
+    bottom: 0;
+    right: 0; }
 
 @media (min-width: 979px) {
   body {
-    margin-top:40px;
-  }
-}
-
+    margin-top: 40px; } }
 @media (max-width: 978px) {
   .container {
-   padding:20px;
-   margin:0;
-  }
+    padding: 20px;
+    margin: 0; }
 
-    body {
-     padding:0;
-    }
+  body {
+    padding: 0; }
 
-    .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
-      margin-left: 0;
-      margin-right: 0;
-      margin-bottom:0;
-    }
-}
+  .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0; } }
+#buildlist td {
+  vertical-align: middle; }
 
-#buildlist {
-  td {
-    vertical-align:middle;
-  }
-}
-
-.center{
+.center {
   float: none;
   margin-left: auto;
-  margin-right: auto;
-}
+  margin-right: auto; }
