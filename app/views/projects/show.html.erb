@@ -10,7 +10,7 @@
           <th>Name of package</th>
           <th>Bundle ID</th>
           <th>Version</th>
-          <th>Upload time</th>
+          <th>Creation time</th>
           <th>Platform</th>
           <th>Download path</th>
       </tr>
@@ -31,8 +31,8 @@
         	<span class="label label-important">Unknown</span>
         	<% end %>
         <td>
-        	<%= link_to '<button class="btn"><i class="icon-download"></i></button>'.html_safe, build.package.url, :for => 'fe_text' %>
-        	<button class='btn' data-clipboard-target='fe_text' data-clipboard-text=<%= "http://#{request.host}:#{request.port}#{build.package.url}" %> id='d_clip_button' title='Click me to copy to clipboard.'><i class="icon-share"></i></button>
+        	<%= link_to '<button class="btn btn-large"><i class="icon-download"></i></button>'.html_safe, build.package.url, :for => 'fe_text' %>
+        	<button class='d_clip_button btn btn-large' data-clipboard-target='fe_text' data-clipboard-text=<%= "http://#{request.host}:#{request.port}#{build.package.url}" %> title='Click me to copy to clipboard.'><i class="icon-share"></i></button>
         </td>
         </td>
     </tr>
@@ -42,6 +42,8 @@
 </div>
 <script>
   $(document).ready(function() {
-    var clip = new ZeroClipboard($("#d_clip_button"))
+    var clip = new ZeroClipboard($(".d_clip_button"));
+    clip.on('load',function(client,args){alert("Clipboard is ready for action.");});
+    clip.on('complete',function(client,args){alert("The download link copied.");});
   });
 </script>
