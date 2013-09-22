@@ -2,12 +2,12 @@
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 <div class="center span4 well text-center">
-	<legend>Forgot your password?</legend>
+	<legend><%= t('application.devise.passwords.new.title') %></legend>
   <%= devise_error_messages! %>
 
-  <div><%= f.email_field :email, :autofocus => true, :placeholder => "Your E-mail address" %></div>
+  <div><%= f.email_field :email, :autofocus => true, :placeholder => t('application.devise.passwords.new.mail') %></div>
 
-  <div><%= f.submit "Send me reset password instructions", :class => "btn btn-large btn-inverse" %></div>
+  <div><%= f.submit t('application.devise.passwords.new.submit'), :class => "btn btn-large btn-inverse" %></div>
 <% end %>
 <br />
 <%= render "devise/shared/links" %>

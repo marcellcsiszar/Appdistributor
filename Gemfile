@@ -37,6 +37,9 @@ end
 group :development, :test do
 	gem "rspec-rails"
 	gem 'debugger'
+  gem 'i18n_generators'
+  gem 'meta_request'
+  gem 'psych'
 end
 
 group :test do

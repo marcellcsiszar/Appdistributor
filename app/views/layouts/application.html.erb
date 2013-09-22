@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Appdistributor" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Appdistributor" %>">
- <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <title><%= content_for?(:title) ? yield(:title) : t('application.title') %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : t('application.title') %>">
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   </head>
@@ -23,10 +23,6 @@
             <div class="span12">
               <%= render 'layouts/messages' %>
               <%= yield %>
-              <!--
-                <p class="notice"><%#= notice %></p>
-                <p class="alert"><%#= alert %></p>
-              -->
             </div>
           </div>
           <footer>

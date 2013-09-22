@@ -1,14 +1,14 @@
 <% if user_signed_in? %>
 <ul class="nav">
 <li>
-    <%= link_to "Dashboard", root_path, :class => 'brand' %>
+    <%= link_to t('application.navigation.dashboard'), root_path, :class => 'brand' %>
 </li>
 <li>
-    <%= link_to('Customers', "/customers")  %>
+    <%= link_to t('application.navigation.customers'), customers_path %>
 </li>
 <li class="divider-vertical"></li>
 <li>
-    <%= link_to('Projects', "/projects")  %>
+    <%= link_to t('application.navigation.projects'), projects_path %>
 </li>
 <li class="divider-vertical"></li>
 </ul>
@@ -16,17 +16,17 @@
 <ul class="nav pull-right">
   <% if user_signed_in? %>
         <li>
-          <%= link_to('Edit account', "/users/edit") %>
+          <%= link_to t('application.navigation.account.edit'), edit_user_registration_path %>
         </li>
         <li>
-        <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>
+        <%= link_to t('application.navigation.account.logout'), destroy_user_session_path, :method=>'delete' %>
         </li>
   <% else %>
     <li>
-    <%= link_to('Sign up', new_user_registration_path)  %>
+    <%= link_to t('application.navigation.account.signup'), new_user_registration_path %>
     </li>
     <li>
-    <%= link_to('Login', new_user_session_path)  %>
+    <%= link_to t('application.navigation.account.login'), new_user_session_path %>
     </li>
   <% end %>
 </ul>
