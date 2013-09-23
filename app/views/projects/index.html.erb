@@ -1,13 +1,13 @@
-<h1>Listing projects</h1>
+<h1><%= t('application.projects.index.title') %></h1>
 
-<h2><%= link_to 'New Project', new_project_path, :class => 'btn btn-info icon' %></h2>
+<h2><%= link_to t('application.projects.index.link_new_pr'), new_project_path, :class => 'btn btn-info icon' %></h2>
 
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Customer</th>
-      <th>Commands</th>
+      <th><%= t('application.projects.index.th_title') %></th>
+      <th><%= t('application.projects.index.th_customer') %></th>
+      <th><%= t('application.projects.index.th_commands') %></th>
     </tr>
   </thead>
 
@@ -16,7 +16,7 @@
       <tr>
         <td><%= link_to project.name, project %></td>
         <td><%= link_to project.customer.name, project.customer if project.customer? %></td>
-        <td><%= link_to 'List of builds', project_path(project._id), :class => 'btn btn-info' %> <%= link_to 'Edit', edit_project_path(project), :class => 'btn btn-inverse' %> <%= link_to "Delete", project, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+        <td><%= link_to t('application.projects.index.list'), project_path(project._id), :class => 'btn btn-info' %> <%= link_to t('application.projects.index.edit'), edit_project_path(project), :class => 'btn btn-inverse' %> <%= link_to "Delete", project, method: :delete, data: { confirm: t('application.projects.index.sure') }, :class => 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

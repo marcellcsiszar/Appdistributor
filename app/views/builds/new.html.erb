@@ -1,5 +1,5 @@
-<h1>Upload build</h1>
+<h1><%= t('application.builds.new.title') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back to build listing', project_path(@project._id) %>
+<%= link_to t('application.builds.new.list'), project_path(@project._id) %>

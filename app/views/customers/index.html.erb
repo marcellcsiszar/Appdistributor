@@ -1,6 +1,6 @@
-<h1>Listing customers</h1>
+<h1><%= t('application.customers.index.title') %></h1>
 
-<h2><%= link_to 'New Customer', new_customer_path, :class => 'btn btn-info icon' %></h2>
+<h2><%= link_to t('application.customers.index.link_new_cu'), new_customer_path, :class => 'btn btn-info icon' %></h2>
 
 <table>
   <tbody>
@@ -20,13 +20,13 @@
             <h4>
             <%= link_to customer.name, customer %>
             </h4>
-            <small><strong>ID: </strong><%= customer.id %></small>
+            <small><strong><%= t('application.customers.index.caption_id') %></strong><%= customer.id %></small>
           </div>
 
           <ul class="span1 pull-right">
-            <li><%= link_to 'Info', customer, :class => 'btn btn-info icon  pull-right' %></li>
-            <li><%= link_to 'Edit', edit_customer_path(customer), :class => 'btn btn-inverse icon  pull-right' %></li>
-            <li><%= link_to 'Delete', customer,method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger icon  pull-right' %></li>
+            <li><%= link_to t('application.info'), customer, :class => 'btn btn-info icon  pull-right' %></li>
+            <li><%= link_to t('application.edit'), edit_customer_path(customer), :class => 'btn btn-inverse icon  pull-right' %></li>
+            <li><%= link_to t('application.delete'), customer,method: :delete, data: { confirm: t('application.devise.registrations.edit.sure') }, :class => 'btn btn-danger icon  pull-right' %></li>
             </ul>
           </div>
         </div>

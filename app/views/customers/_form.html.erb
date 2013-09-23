@@ -15,15 +15,14 @@
     <div class="row">
       <div class="span3">
 
-        <label>Name</label>
+        <label><%= t('application.customers.form.label_name') %></label>
         <%= f.text_field :name %>
 
         <%= f.association :users, :collection => User.all, value_method: :_id, include_blank: false %>
-        <%#= collection_select(:customer, :users, User.all, :_id, :name, {:selected => @customer.user_ids.map(&:_id)}, {:multiple=>true }) %>
 
       </div>
       <div class="span3">
-        <label>Image</label>
+        <label><%= t('application.customers.form.label_image') %></label>
           <%= f.hidden_field :retained_image %>
             <%- if @customer.image_uid? %>
               <%= image_tag @customer.image.thumb('200x200').url if @customer.image_uid %>

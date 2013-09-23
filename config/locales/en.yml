@@ -1,6 +1,54 @@
 en:
   #Manual created
   application:
+    builds:
+      new:
+        title: "Upload build"
+        list: "Back to build listing"
+    projects:
+      form:
+        label_name: "Name"
+      edit:
+        title:  "Editing project"
+      new:
+        title:  "New project"
+      index:
+        title: "Listing projects"
+        link_new_pr:  "New Project"
+        th_title: "Title"
+        th_customer:  "Customers"
+        th_commands:  "Commands"
+        list: "List of builds"
+        edit: "Edit"
+        sure: "Are you sure?"
+      show:
+        upl:  "Upload Build"
+        edit: "Edit project details"
+        back: "Back to projects"
+        th_icon:  "Icon"
+        th_name:  "Name of package"
+        th_bundle:  "BundleID"
+        th_version: "Version"
+        th_creat: "Creation time"
+        th_platf: "Platform"
+        th_downl: "Download path"
+    customers:
+      edit:
+        title:  "Editing customer"
+      new:
+        title:  "New customer"
+      index:
+        title:  "Listing customers"
+        link_new_cu:  "New Customer"
+        caption_id: "ID:"
+      form:
+        label_name: "Name"
+        label_image:  "Image"
+    show: "Show"
+    back: "Back"
+    edit: "Edit"
+    delete: "Delete"
+    info: "Info"
     devise:
       confirmations:
         new:
@@ -30,6 +78,38 @@ en:
           mail: "Your E-mail address"
           submit: "Send me reset password instructions"
           title: "Forgot your password?"
+      registrations:
+        edit:
+          edit: "Edit"
+          back: "Back"
+          wait: "Currently waiting confirmation for: "
+          new_pw: "New Password"
+          confirm:  "Confirm the new Password"
+          current_pw: "Current Password"
+          confirm_label:  "Confirm your changes"
+          update: "Update"
+          cancel: "Cancel my account"
+          sure: "Are you sure?"
+        new:
+          title:  "Sign up"
+          placeh_name:  "Your name"
+          placeh_mail:  "Your E-mail address"
+          placeh_pass:  "Your Password"
+          placeh_pwdc:  "Password Confirmation"
+      sessions:
+        new:
+          title:  "Sign In"
+          placeh_mail:  "E-mail address"
+          placeh_pass:  "Password"
+          remember: "Remember me"
+      shared:
+        links:
+          confirm: "Didn't receive confirmation instructions?"
+          unlock: "Didn't receive unlock instructions?"
+          oauth:  "Sign in with #{provider.to_s.titleize}"
+      unlocks:
+        new:
+          title:  "Resend unlock instructions"
     navigation:
       account:
         edit: "Edit account"
