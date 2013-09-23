@@ -6,7 +6,7 @@ gem 'rails', '4.0.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
-gem 'less-rails'
+gem 'less-rails', '~> 2.4.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -15,16 +15,16 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # Requied 'cos the rvm said
-gem 'execjs'
+gem 'execjs', '~> 2.0.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '4.0.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '1.3.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -50,18 +50,18 @@ group :test do
 end
 
 # Devise for auth
-gem 'devise'
+gem 'devise', '3.1.0'
 
 # MongoDB miatt a mongoid wrapper
 gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 
 # Mongoid said it's need the bson_ext so here it is
-gem 'bson_ext'
+gem 'bson_ext', '1.9.2'
 
 # Bootstrap for SWAG
 group :assets do
 	gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
-	gem 'twitter-bootstrap-rails'
+	gem 'twitter-bootstrap-rails', '2.2.8'
 end
 
 # The recommended doorkeeper for OAuth
@@ -72,19 +72,19 @@ gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.15'
 
 # For Forms
-gem 'simple_form'
+gem 'simple_form', '1.4.1'
 
 # Perform some Android analysis
-gem 'ruby_apk'
+gem 'ruby_apk', '0.6.0'
 
 # Perform some iOS analysis
-gem "ipa"
+gem "ipa",  '0.1.3'
 
 # Perform Zip commands
 gem 'rubyzip',  "~> 0.9.9"
 
 # To perform copy-to-clipboard
-gem 'zeroclipboard-rails'
+gem 'zeroclipboard-rails',  '0.0.7'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
