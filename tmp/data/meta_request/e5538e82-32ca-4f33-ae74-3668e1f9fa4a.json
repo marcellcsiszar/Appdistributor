@@ -1,1 +1,0 @@
-[{"name":"process_action.action_controller","payload":{"controller":"User::DashboardController","action":"index","params":{"controller":"user/dashboard","action":"index"},"format":"html","method":"GET","path":"/"},"time":"2013-09-22T23:28:01+02:00","transaction_id":"d1aa7df0cc46c800745c","end":"2013-09-22T23:28:01+02:00","children":[],"duration":92.311802}]
