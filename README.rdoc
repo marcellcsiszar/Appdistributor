@@ -1,4 +1,8 @@
 == Distror
 Ruby on Rails app for package distribution
 
-==
+== Load exported db
+rake db:data:load
+
+== Dump db
+rake db:data:dump
