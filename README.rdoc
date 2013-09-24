@@ -1,4 +1,4 @@
-== Distror
+== Appdistributor
 Ruby on Rails app for package distribution
 
 == Load exported db

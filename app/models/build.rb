@@ -13,8 +13,12 @@ class Build
   field :taken, :type => Time
 
   ## Accessors
-  image_accessor :icon
-  file_accessor :package
+  image_accessor :icon do
+    storage_path{ "builds/#{self._parent.name}/icon.#{self.version}" }
+  end
+  file_accessor :package do
+    storage_path{ "builds/#{self._parent.name}/version.#{self.version}" }
+  end
 
   ## Validators
   validates_presence_of :package

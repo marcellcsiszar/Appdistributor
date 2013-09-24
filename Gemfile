@@ -21,7 +21,7 @@ gem 'execjs', '~> 2.0.1'
 gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails', '4.0.0'
+gem 'jquery-rails', '3.0.4'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '1.3.0'
@@ -40,13 +40,17 @@ group :development, :test do
   gem 'i18n_generators'
   gem 'meta_request'
   gem 'psych'
+  gem 'factory_girl_rails', "~> 4.0"
 end
 
 group :test do
 	gem 'cucumber-rails', :require => false
 	gem 'database_cleaner'
 	gem 'mongoid-rspec'
-
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end
 
 # Devise for auth
