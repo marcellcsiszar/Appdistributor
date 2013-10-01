@@ -28,7 +28,7 @@
       <% available_organizations.each do |org| -%>
         <% if org._id.to_s != current_organization %>
           <li>
-            <%= link_to_function "-- #{org.name}", "document.cookie =\"current_organization=#{org._id.to_s}\";path=\"/\";location.reload()" %>
+            <%= link_to "-- #{org.name}", '#', :onclick => "document.cookie =\"current_organization=#{org._id.to_s}\";path=\"/\";location.reload()" %>
           </li>
         <% else %>
             <li class="disabled">

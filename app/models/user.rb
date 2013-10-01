@@ -32,7 +32,6 @@ class User
 
   # 1-N Relationship between Organizations
   has_and_belongs_to_many :organizations
-  belongs_to :customer
 
   ### Unused
   ## Confirmable

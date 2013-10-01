@@ -2,7 +2,7 @@
 class SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
-    cookies.permanent[:current_organization] = Organization.where(:user_ids.in=>[current_user]).count>0 ? Organization.where(:user_ids.in=>[current_user]).first._id : nil
+    cookies[:current_organization] = Organization.where(:user_ids.in=>[current_user]).count>0 ? Organization.where(:user_ids.in=>[current_user]).first._id : nil
     super
   end
 

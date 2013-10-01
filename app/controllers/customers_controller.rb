@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.where(:organization_id => current_organization)
+    @customers = Customer.where(:organization_ids.in=>[current_organization])
   end
 
   # GET /customers/1
@@ -16,7 +16,6 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new()
-    @users = User.where(:organization_ids.in=>[current_organization])
   end
 
   # GET /customers/1/edit
@@ -27,7 +26,7 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
-    @customer.organization = current_organization
+    @customer.organization_ids << Moped::BSON::ObjectId.from_string(current_organization)
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
@@ -71,6 +70,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params[:customer].permit(:name,:image,:image_uid,:remove_image,:organization,:user_ids => [])
+      params[:customer].permit(:name,:image,:image_uid,:remove_image,:organization_ids => [],:user_ids => [])
     end
 end

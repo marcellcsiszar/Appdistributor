@@ -7,8 +7,9 @@ class Project
 
   ## Validators
   validates_uniqueness_of :name
+  validates_uniqueness_of :bundleID
+
   validates_presence_of :name
-  validates_presence_of :organization
   validates_presence_of :bundleID
 
   ## Associations

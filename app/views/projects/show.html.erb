@@ -22,7 +22,6 @@
 <script>
   $(document).ready(function() {
     var clip = new ZeroClipboard($(".d_clip_button"));
-    clip.on('load',function(client,args){alert("Clipboard is ready for action.");});
-    clip.on('complete',function(client,args){alert("The download link copied.");});
+    clip.on('complete',function(client,args){alert(<%= t('application.zeroclipboard').html_safe %>);});
   });
 </script>

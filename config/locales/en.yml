@@ -8,6 +8,7 @@ en:
     projects:
       form:
         label_name: "Name"
+        label_bundleID: "BundleID"
       edit:
         title:  "Editing project"
       new:
@@ -134,6 +135,7 @@ en:
       projects: Projects
       account_dot:  "Account:"
     title: Appdistributor
+    zeroclipboard: '"The download link copied."'
   #Generated
   date:
     abbr_day_names:

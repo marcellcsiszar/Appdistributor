@@ -25,7 +25,6 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = Organization.new(organization_params)
-
     respond_to do |format|
       if @organization.save
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
@@ -69,6 +68,6 @@ class OrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
-      params[:organization].permit(:name,:picture,:picture_uid,:remove_picture)
+      params[:organization].permit(:name,:picture,:picture_uid,:remove_picture,:user_ids => [],:customer_ids => [])
     end
 end

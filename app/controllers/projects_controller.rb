@@ -31,8 +31,6 @@ class ProjectsController < ApplicationController
   def create
     @organization = Organization.find(current_organization)
     @project = Project.new(project_params)
-    @customers = @organization.customers
-    @users = @organization.users
     @organization.projects << @project
     respond_to do |format|
       if @project.save
@@ -77,6 +75,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params[:project].permit(:customer_id,:name,:organization_id)
+      params[:project].permit(Project.fields.keys)
     end
 end

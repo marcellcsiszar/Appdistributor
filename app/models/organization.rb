@@ -13,7 +13,7 @@ class Organization
   validates_presence_of :name
 
   #Associations
-  has_many :customers
+  has_and_belongs_to_many :customers
   has_and_belongs_to_many :users
   embeds_many :projects
 
