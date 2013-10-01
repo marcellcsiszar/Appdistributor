@@ -30,9 +30,9 @@ class User
   validates_presence_of :name, :email
   validates_uniqueness_of :name, :email, :case_sensitive => false
 
-  # N-N Relationship between Customers
-  has_and_belongs_to_many :customers
-
+  # 1-N Relationship between Organizations
+  has_and_belongs_to_many :organizations
+  belongs_to :customer
 
   ### Unused
   ## Confirmable

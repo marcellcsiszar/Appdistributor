@@ -13,8 +13,34 @@
 <li class="divider-vertical"></li>
 </ul>
 <% end %>
-<ul class="nav pull-right">
-  <% if user_signed_in? %>
+<div class="nav pull-right">
+  <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
+    <%= t('application.navigation.options') %>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <% if user_signed_in? -%>
+    <li class="disabled">
+      <a href="#">
+      <strong><%= t('application.navigation.orgs') %></strong>
+      </a>
+    </li>
+      <% available_organizations.each do |org| -%>
+        <% if org._id.to_s != current_organization %>
+          <li>
+            <%= link_to_function "-- #{org.name}", "document.cookie =\"current_organization=#{org._id.to_s}\";path=\"/\";location.reload()" %>
+          </li>
+        <% else %>
+            <li class="disabled">
+            <%= link_to "-- #{org.name}", "#" %>
+          </li>
+      <% end -%>
+    <% end %>
+        <li class="disabled">
+        <a href="#">
+        <strong><%= t('application.navigation.account_dot') %></strong>
+        </a>
+        </li>
         <li>
           <%= link_to t('application.navigation.account.edit'), edit_user_registration_path %>
         </li>
@@ -29,4 +55,5 @@
     <%= link_to t('application.navigation.account.login'), new_user_session_path %>
     </li>
   <% end %>
-</ul>
+  </ul>
+</div>

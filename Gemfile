@@ -38,9 +38,13 @@ group :development, :test do
 	gem "rspec-rails"
 	gem 'debugger'
   gem 'i18n_generators'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'meta_request'
   gem 'psych'
   gem 'factory_girl_rails', "~> 4.0"
+  gem 'pry-rails'
+  gem 'pry-nav'
 end
 
 group :test do

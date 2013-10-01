@@ -5,19 +5,21 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects =  Organization.find(current_organization).projects
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @project = Project.find(params[:id])
-    @builds = @project.builds
+    @project =  Organization.find(current_organization).projects.find(params[:id])
   end
 
   # GET /projects/new
   def new
+    @organization = Organization.find(current_organization)
     @project = Project.new
+    @customers = @organization.customers
+    @users = @organization.users
   end
 
   # GET /projects/1/edit
@@ -27,8 +29,11 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
+    @organization = Organization.find(current_organization)
     @project = Project.new(project_params)
-
+    @customers = @organization.customers
+    @users = @organization.users
+    @organization.projects << @project
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -67,11 +72,11 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      @project =  Organization.find(current_organization).projects.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params[:project].permit(:customer_id,:name)
+      params[:project].permit(:customer_id,:name,:organization_id)
     end
 end

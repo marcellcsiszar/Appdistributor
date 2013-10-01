@@ -44,6 +44,12 @@ en:
       form:
         label_name: "Name"
         label_image:  "Image"
+    organizations:
+      new:
+        title:  "New orgnization"
+      form:
+        label_name: "Name"
+        label_picture:  "Picture"
     show: "Show"
     back: "Back"
     edit: "Edit"
@@ -90,12 +96,17 @@ en:
           update: "Update"
           cancel: "Cancel my account"
           sure: "Are you sure?"
+          add:  "Add a new one"
         new:
           title:  "Sign up"
           placeh_name:  "Your name"
           placeh_mail:  "Your E-mail address"
           placeh_pass:  "Your Password"
           placeh_pwdc:  "Password Confirmation"
+          select_org:   "Select Organization"
+          create_org:   "Create Organization"
+          or_create_org:  "or Create Organization"
+          placeh_org: "Name of Organization"
       sessions:
         new:
           title:  "Sign In"
@@ -116,9 +127,12 @@ en:
         login: Login
         logout: Logout
         signup: "Sign Up"
+      options:  "Options"
+      orgs: "Organizations:"
       customers: Customers
       dashboard: Dashboard
       projects: Projects
+      account_dot:  "Account:"
     title: Appdistributor
   #Generated
   date:

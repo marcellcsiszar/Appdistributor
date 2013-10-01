@@ -15,7 +15,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= link_to project.name, project %></td>
-        <td></td>
+        <td><%= link_to project.customer.name, project.customer if project.customer? %></td>
         <td><%= link_to t('application.projects.index.list'), project_path(project._id), :class => 'btn btn-info' %> <%= link_to t('application.projects.index.edit'), edit_project_path(project), :class => 'btn btn-inverse' %> <%= link_to "Delete", project, method: :delete, data: { confirm: t('application.projects.index.sure') }, :class => 'btn btn-danger' %></td>
       </tr>
     <% end %>

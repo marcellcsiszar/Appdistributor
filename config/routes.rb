@@ -1,13 +1,21 @@
 Appdistributor::Application.routes.draw do
   devise_for :admins
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations" }
+  resources :users do
+    resources :organizations
+  end
   resources :dashboard
   resources :customers do
     resources :users
   end
   resources :projects do
     resources :customers
-    resources :builds, only: [:new, :create]
+    #resources :builds, only: [:new, :create]
+    resource :organization
+  end
+  resources :organizations do
+    resources :users
+    resources :projects
   end
 
   use_doorkeeper

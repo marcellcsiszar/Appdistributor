@@ -1,6 +1,6 @@
 <div class="">
 <h1><%= @project.name %></h1>
-<h3><%= link_to t('application.projects.show.upl'), new_project_build_path(@project._id), :class => 'btn btn-success' %> <%= link_to t('application.projects.show.edit'), edit_project_path(@project), :class => 'btn btn-inverse' %> <%= link_to t('application.projects.show.back'), projects_path, :class => 'btn btn-info' %></h3>
+<h3><%= link_to t('application.projects.show.upl'), :class => 'btn btn-success' %> <%= link_to t('application.projects.show.edit'), edit_project_path(@project), :class => 'btn btn-inverse' %> <%= link_to t('application.projects.show.back'), projects_path, :class => 'btn btn-info' %></h3>
 </div>
 <div class="well well-small">
 <table class="table table-striped table-condensed table-hover" id="buildlist">
@@ -16,27 +16,6 @@
       </tr>
   </thead>
   <tbody>
-    <% @builds.each do |build| %>
-    <tr>
-        <td><%= image_tag(build.icon.thumb('50x50').url, :alt => build.packagename, :class => "clearfix img-polaroid") %></td>
-        <td><%= build.packagename %></td>
-        <td><%= build.bundleID %></td>
-        <td><%= build.version %></td>
-        <td><%= build.taken %></td>
-        <td><% if build.platform == "Android" %>
-        	<span class="label label-success">Android</span>
-        	<% elsif build.platform == "iOS" %>
-        	<span class="label">iOS</span>
-        	<% else %>
-        	<span class="label label-important">Unknown</span>
-        	<% end %>
-        <td>
-        	<%= link_to '<button class="btn btn-large"><i class="icon-download"></i></button>'.html_safe, build.package.url, :for => 'fe_text' %>
-        	<button class='d_clip_button btn btn-large' data-clipboard-target='fe_text' data-clipboard-text=<%= "http://#{request.host}:#{request.port}#{build.package.url}" %> title='Click me to copy to clipboard.'><i class="icon-share"></i></button>
-        </td>
-        </td>
-    </tr>
-    <% end %>
   </tbody>
 </table>
 </div>

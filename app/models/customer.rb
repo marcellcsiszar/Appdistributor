@@ -10,9 +10,11 @@ class Customer
 
   ## Validators
   validates_uniqueness_of :name
+  validates_presence_of :name
+  validates_presence_of :organization
 
   ## Associations
-  has_and_belongs_to_many :users
-  has_many :projects
-
+  belongs_to :organization
+  has_many :users
+  belongs_to :project
 end

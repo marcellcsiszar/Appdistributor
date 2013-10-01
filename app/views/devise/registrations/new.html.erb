@@ -1,6 +1,5 @@
 <div class="container login">
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 <div class="center span4 well text-center">
   <%= devise_error_messages! %>
   <legend><%= t('application.devise.registrations.new.title') %></legend>

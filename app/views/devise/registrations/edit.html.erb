@@ -1,14 +1,13 @@
 <div class="row">
 <div class="span6">
 <h2><%= t('application.devise.registrations.edit.edit') %> <%= resource_name.to_s.humanize %> <%= link_to t('application.devise.registrations.edit.back'), :back, :class => 'btn btn-info' %></h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal' }) do |f| %>
   <%= devise_error_messages! %>
 
-    <div><%= f.label :name %>
+    <div>
   <%= f.text_field :name, :autofocus => true %></div>
 
-  <div><%= f.label :email %>
+  <div>
   <%= f.email_field :email %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -24,12 +23,21 @@
   <div><%= f.label t('application.devise.registrations.edit.confirm_label') %>
   <%= f.password_field :current_password, :placeholder => t('application.devise.registrations.edit.current_pw') %></div>
 
+  <%= f.association :organizations, :collection => Organization.all, value_method: :_id, include_blank: false %>
+
   <div><%= f.submit t('application.devise.registrations.edit.update'), :class => 'btn btn-inverse' %></div>
 <% end %>
 </div>
+
 <div class="span6">
+
+  <h2><%=t('application.devise.registrations.new.create_org')%></h2>
+
+  <p><%= button_to t('application.devise.registrations.edit.add'), new_user_organization_path(resource._id), :class => 'btn btn-success', :method => :get %></p>
+
   <h2><%=t('application.devise.registrations.edit.cancel')%></h2>
 
   <p><%= button_to t('application.devise.registrations.edit.cancel'), registration_path(resource_name), :data => { :confirm => t('application.devise.registrations.edit.sure') }, :method => :delete, :class => 'btn btn-danger' %></p>
+
 </div>
 </div>
