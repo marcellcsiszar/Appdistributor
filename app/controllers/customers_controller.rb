@@ -29,7 +29,7 @@ class CustomersController < ApplicationController
     @customer.organization_ids << Moped::BSON::ObjectId.from_string(current_organization)
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.html { redirect_to action: 'index', notice: 'Customer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @customer }
       else
         format.html { render action: 'new' }
@@ -70,6 +70,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params[:customer].permit(:name,:image,:image_uid,:remove_image,:organization_ids => [],:user_ids => [])
+      params[:customer].permit(Customer.fields.keys)
     end
 end

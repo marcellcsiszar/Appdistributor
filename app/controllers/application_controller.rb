@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :current_organization, :available_organizations, :change_current_organization
+  helper_method :current_organization, :available_organizations, :setup_cookie_organization
 
   protected
 
@@ -16,6 +16,15 @@ class ApplicationController < ActionController::Base
 
   def current_organization
     return cookies[:current_organization]
+  end
+
+  # Setup organization id in cookies. In session and navigation works too.
+  def setup_cookie_organization
+    cookies[:current_organization] = available_organizations.count>0 ? available_organizations.first._id : nil
+  end
+
+  def setup_cookie_organization(org_id)
+    cookies[:current_organization] = org_id
   end
 
   def available_organizations
