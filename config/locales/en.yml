@@ -16,10 +16,14 @@ en:
       index:
         title: "Listing projects"
         link_new_pr:  "New Project"
-        th_title: "Title"
-        th_customer:  "Customers"
+        th_ipa: "iOS Applications"
+        th_apk: "Android Applications"
+        th_app: "App"
+        th_last_up:  "Last Uploaded"
+        th_last_build:  "Lastest Build"
         th_commands:  "Commands"
-        list: "List of builds"
+        th_name:  "Name of project"
+        list: "List of applications"
         edit: "Edit"
         sure: "Are you sure?"
       show:

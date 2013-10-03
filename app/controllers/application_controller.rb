@@ -23,10 +23,6 @@ class ApplicationController < ActionController::Base
     cookies[:current_organization] = available_organizations.count>0 ? available_organizations.first._id : nil
   end
 
-  def setup_cookie_organization(org_id)
-    cookies[:current_organization] = org_id
-  end
-
   def available_organizations
     return @available_organizations = Organization.where(:user_ids.in=>[current_user])
   end

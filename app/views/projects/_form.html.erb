@@ -14,8 +14,8 @@
     <label><%= t('application.projects.form.label_bundleID') %></label>
     <%= f.text_field :bundleID %>
 
-    <%= f.association :customers, :collection => @customers, value_method: :_id, include_blank: false %>
-    <%= f.association :users, :collection => @users, value_method: :_id, include_blank: false %>
+    <%= f.association :customers, :collection => @organization.customers, value_method: :_id, include_blank: false %>
+    <%= f.association :users, :collection => @organization.users, value_method: :_id, include_blank: false %>
   </div>
 
   <div class="actions">

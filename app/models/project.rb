@@ -14,8 +14,8 @@ class Project
 
   ## Associations
   embedded_in :organization
-  has_many :customers
-  has_many :users
+  has_and_belongs_to_many :customers
+  has_and_belongs_to_many :users
   embeds_many :ipa_apps
   embeds_many :apk_apps
 

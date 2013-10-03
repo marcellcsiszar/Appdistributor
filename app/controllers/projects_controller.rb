@@ -17,13 +17,15 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
+    @organization = actual_organization
     @project = Project.new
-    @customers = actual_organization.customers
-    @users = actual_organization.users
+    @customers = @organization.customers
+    @users = @organization.users
   end
 
   # GET /projects/1/edit
   def edit
+    @organization = actual_organization
   end
 
   # POST /projects
@@ -69,16 +71,17 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project =  actual_organization.projects.find(params[:id])
+      @project = actual_organization.projects.find(params[:id])
     end
 
-    #
+    # Returns the actual organization
     def actual_organization
       return Organization.find(current_organization)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params[:project].permit(Project.fields.keys)
+      params[:project].permit(:bundleID,:name,:user_ids => [],:customer_ids => [])
     end
+
 end
