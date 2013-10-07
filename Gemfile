@@ -86,7 +86,7 @@ gem 'simple_form', '1.4.1'
 gem 'ruby_apk', '0.6.0'
 
 # Perform some iOS analysis
-gem "ipa_reader"
+gem "ipa"
 
 # Perform Zip commands
 gem 'rubyzip',  "~> 0.9.9"

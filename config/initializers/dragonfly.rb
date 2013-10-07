@@ -6,7 +6,7 @@ app.configure_with(:rails)
 
 app.define_macro_on_include(Mongoid::Document, :image_accessor)
 
-build = Dragonfly[:files]
+build = Dragonfly[:packages]
 build.configure_with(:rails)
 build.define_macro_on_include(Mongoid::Document, :file_accessor)
 build.analyser.register(Dragonfly::Analysis::FileCommandAnalyser)

@@ -1,7 +1,5 @@
 <h1><%= @ipaapp.name %></h1>
 
-<p id="notice"><%= notice %></p>
-
 <h2>
   <%= link_to t('application.back'), :back, :class => 'btn btn-info icon' %>
   <%= link_to t('application.ipabuilds.new'), new_project_ipaapp_ipabuild_path(:ipaapp_id => @ipaapp._id), :class => 'btn btn-inverse icon' %>
@@ -12,7 +10,6 @@
       <tr>
           <th><%= t('application.projects.show.th_icon') %></th>
           <th><%= t('application.projects.show.th_name') %></th>
-          <th><%= t('application.projects.show.th_bundle') %></th>
           <th><%= t('application.projects.show.th_version') %></th>
           <th><%= t('application.projects.show.th_creat') %></th>
           <th><%= t('application.projects.show.th_downl') %></th>
@@ -21,13 +18,14 @@
   <tbody>
     <% @ipaapp.ipabuilds.each do |build| %>
     <tr>
-        <td><%= image_tag(build.icon.thumb('50x50').url, :alt => build.packagename, :class => "clearfix img-polaroid") %></td>
+        <td><%= image_tag(build.icon.png.url, :alt => build.packagename, :class => "clearfix img-polaroid") %></td>
         <td><%= build.packagename %></td>
         <td><%= build.version %></td>
         <td><%= build.taken %></td>
+        <td>
           <%= link_to '<button class="btn btn-large"><i class="icon-download"></i></button>'.html_safe, build.package.url, :for => 'fe_text' %>
+
           <button class='d_clip_button btn btn-large' data-clipboard-target='fe_text' data-clipboard-text=<%= "http://#{request.host}:#{request.port}#{build.package.url}" %> title='Click me to copy to clipboard.'><i class="icon-share"></i></button>
-        </td>
         </td>
     </tr>
     <% end %>
