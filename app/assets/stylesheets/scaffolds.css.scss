@@ -16,6 +16,11 @@ ul {
   list-style: none;
 }
 
+blockquote {
+  margin: 0;
+  padding-left: 5px;
+  border: 0;
+}
 
 .thumbnail .caption {
   padding : 0;
@@ -25,6 +30,9 @@ ul {
   }
 }
 
+.actions {
+  margin: 10px 0px 10px 0px;
+}
 
 pre {
   background-color: #eee;
@@ -131,3 +139,14 @@ div {
   display: inline;
 }
 .check_boxes label:after { content:"\A"; white-space:pre; }
+.inline-table {
+  display: inline-table
+}
+
+.table td.cell-buttons {
+     padding: 8px;
+     line-height: 20px;
+     text-align: center !important;
+     vertical-align: middle !important;
+     border-top: 1px solid #dddddd;
+}

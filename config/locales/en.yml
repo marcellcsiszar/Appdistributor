@@ -1,6 +1,20 @@
 en:
   #Manual created
   application:
+    ipabuilds:
+      new:  "Upload build"
+    ipaapps:
+      new:
+        title:  "New iOS Application"
+      form:
+        label_name: "Name"
+        label_bundleID: "bundleID"
+      edit:
+        title:  "Editing "
+      index:
+        list: "List of builds"
+        edit: "Edit"
+        delete: "Delete"
     builds:
       new:
         title: "Upload build"
@@ -8,7 +22,6 @@ en:
     projects:
       form:
         label_name: "Name"
-        label_bundleID: "BundleID"
       edit:
         title:  "Editing project"
       new:
@@ -27,6 +40,8 @@ en:
         edit: "Edit"
         sure: "Are you sure?"
       show:
+        new_app_ios: "New iOS Application"
+        new_app_apk: "New Android Application"
         upl:  "Upload Build"
         edit: "Edit project details"
         back: "Back to projects"
@@ -140,6 +155,7 @@ en:
       account_dot:  "Account:"
     title: Appdistributor
     zeroclipboard: '"The download link copied."'
+    updated:  " was successfully updated."
   #Generated
   date:
     abbr_day_names:

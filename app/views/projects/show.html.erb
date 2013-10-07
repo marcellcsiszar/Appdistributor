@@ -1,7 +1,6 @@
-<h1><%= t('application.projects.index.title') %></h1>
-
-<h2><%= link_to t('application.projects.index.link_new_pr'), new_project_path, :class => 'btn btn-info icon' %></h2>
-
+<h1><%= @project.name %></h1>
+<h2><%= link_to t('application.projects.show.new_app_ios'),new_project_ipaapp_path(:project_id => @project.id),:class=> 'btn btn-inverse'%> <%= link_to t('application.projects.show.new_app_apk'),new_project_apkapp_path(:project_id => @project.id), :class => 'btn btn-success' %></h2>
+<% if @project.ipaapps.count >0 then %>
 <table class="table table-bordered table-striped">
   <thead>
     <blockquote>
@@ -16,15 +15,31 @@
   </thead>
 
   <tbody>
-    <% @projects.each do |project| %>
+    <% @project.ipaapps.each do |ipa_app| %>
       <tr>
-        <td><%= link_to project.name, project %></td>
-        <td><%= link_to t('application.projects.index.list'), project_path(project._id), :class => 'btn btn-info' %> <%= link_to t('application.projects.index.edit'), edit_project_path(project), :class => 'btn btn-inverse' %> <%= link_to "Delete", project, method: :delete, data: { confirm: t('application.projects.index.sure') }, :class => 'btn btn-danger' %></td>
+        <td>
+          <% if false %>
+            <%= image_tag(ipa_app.ipabuilds.last.icon.thumb('40x40').url, :class => "clearfix img-polaroid") %>
+          <% elsif %>
+            <%= image_tag("http://placehold.it/40x40", :class => "clearfix img-polaroid") %>
+          <% end %>
+          <blockquote class="inline-table">
+            <p>
+              <%= link_to ipa_app.name, project_ipaapp_path(:project_id =>@project._id, :id => ipa_app._id) %>
+            </p>
+            <%= ipa_app.bundleID %>
+          </blockquote>
+        </td>
+        <td></td>
+        <td></td>
+        <td class="cell-buttons"><%= link_to t('application.ipaapps.index.edit'), edit_project_ipaapp_path(:project_id => @project.id,:id => ipa_app._id), :class => 'btn btn-inverse' %> <%= link_to "Delete", project_ipaapp_path(:project_id => @project.id,:id => ipa_app._id),:method => :delete, data: { confirm: t('application.projects.index.sure') }, :class => 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<% end %>
 
+<% if @project.apkapps.count >0 then %>
 <table class="table table-bordered table-striped">
   <thead>
     <blockquote>
@@ -37,19 +52,13 @@
       <th><%= t('application.projects.index.th_commands') %></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @projects.each do |project| %>
+    <% @project.apkapps.each do |apk_app| %>
       <tr>
-        <td><%= link_to project.name, project %></td>
-        <td><%= link_to t('application.projects.index.list'), project_path(project._id), :class => 'btn btn-info' %> <%= link_to t('application.projects.index.edit'), edit_project_path(project), :class => 'btn btn-inverse' %> <%= link_to "Delete", project, method: :delete, data: { confirm: t('application.projects.index.sure') }, :class => 'btn btn-danger' %></td>
+        <td><%= link_to apk_app.name, apk_app %></td>
+        <td><%#= link_to t('application.projects.index.list'), project_path(project._id), :class => 'btn btn-info' %> <%#= link_to t('application.projects.index.edit'), edit_project_path(project), :class => 'btn btn-inverse' %> <%#= link_to "Delete", project, method: :delete, data: { confirm: t('application.projects.index.sure') }, :class => 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<script>
-  $(document).ready(function() {
-    var clip = new ZeroClipboard($(".d_clip_button"));
-    clip.on('complete',function(client,args){alert(<%= t('application.zeroclipboard').html_safe %>);});
-  });
-</script>
+<% end %>

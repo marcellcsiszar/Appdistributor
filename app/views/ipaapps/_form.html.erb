@@ -1,0 +1,15 @@
+<%= simple_form_for([@project,@ipaapp]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <label><%= t('application.ipaapps.form.label_name') %></label>
+    <%= f.text_field :name %>
+
+    <label><%= t('application.ipaapps.form.label_bundleID') %></label>
+    <%= f.text_field :bundleID %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

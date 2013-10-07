@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_organization, :available_organizations, :setup_cookie_organization
 
+  helper :all
+
   protected
 
   def configure_permitted_parameters
@@ -25,6 +27,15 @@ class ApplicationController < ActionController::Base
 
   def available_organizations
     return @available_organizations = Organization.where(:user_ids.in=>[current_user])
+  end
+
+  # Returns the actual organization
+  def actual_organization
+    return Organization.find(current_organization)
+  end
+
+  def actual_project
+    return @actual_project = Organization.find(current_organization).projects.find(params[:project_id])
   end
 
 end

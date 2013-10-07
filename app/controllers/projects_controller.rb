@@ -12,7 +12,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @project =  actual_organization.projects.find(params[:id])
   end
 
   # GET /projects/new
@@ -74,14 +73,9 @@ class ProjectsController < ApplicationController
       @project = actual_organization.projects.find(params[:id])
     end
 
-    # Returns the actual organization
-    def actual_organization
-      return Organization.find(current_organization)
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params[:project].permit(:bundleID,:name,:user_ids => [],:customer_ids => [])
+      params[:project].permit(:name,:user_ids => [],:customer_ids => [])
     end
 
 end

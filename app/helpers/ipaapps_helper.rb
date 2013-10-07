@@ -1,0 +1,2 @@
+module IpaappsHelper
+end
