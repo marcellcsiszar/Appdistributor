@@ -11,7 +11,7 @@ class Ipabuild
 
   ## Accessors
   image_accessor :icon do
-    storage_path{ "#{self._parent._parent.name}/ipaapps/#{self._parent.name}/builds/icon.#{self.version}" }
+    storage_path{ "#{self._parent._parent.name}/ipaapps/#{self._parent.name}/builds/#{self.version}/icon.#{self.version}" }
   end
   file_accessor :package do
     storage_path{ "#{self._parent._parent.name}/ipaapps/#{self._parent.name}/builds/#{self.version}/#{self.version}" }
@@ -29,7 +29,6 @@ class Ipabuild
   def ipa_process
     @ipa = IPA::IPAFile.new(self.package.file);
     self.packagename = @ipa.name
-    binding.pry
     begin
     self.icon = normalize_png(@ipa.icon)
     rescue
@@ -44,7 +43,6 @@ class Ipabuild
     if self._parent.bundleID == IPA::IPAFile.new(self.package.file).identifier
       return true
     else
-      self.errors.add(:bundleID, "is not same as in the app")
       return false
     end
   end

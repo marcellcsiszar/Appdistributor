@@ -1,0 +1,15 @@
+<%= simple_form_for([@project,@apkapp]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <label><%= t('application.apkapps.form.label_name') %></label>
+    <%= f.text_field :name %>
+
+    <label><%= t('application.apkapps.form.label_bundleID') %></label>
+    <%= f.text_field :bundleID %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

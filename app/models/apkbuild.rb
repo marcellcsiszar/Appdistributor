@@ -4,7 +4,6 @@ class Apkbuild
 
   ## Fields
   field :packagename, :type => String
-  field :bundleID, :type => String
   field :version, :type => String
   field :icon_uid, :type => String
   field :package_uid, :type => String
@@ -12,16 +11,16 @@ class Apkbuild
 
   ## Accessors
   image_accessor :icon do
-    storage_path{ "builds/#{self._parent.name}/icon.#{self.version}" }
+    storage_path{ "#{self._parent._parent.name}/apkapps/#{self._parent.name}/builds/#{self.version}/icon.#{self.version}" }
   end
   file_accessor :package do
-    storage_path{ "builds/#{self._parent.name}/version.#{self.version}" }
+    storage_path{ "#{self._parent._parent.name}/apkapps/#{self._parent.name}/builds/#{self.version}/#{self.version}" }
   end
 
   ## Validators
   validates_presence_of :package
   validates_property :format, :of => :package, :in => [:apk]
-  validates_uniqueness_of :version
+  validate :valid_bundleID
 
   ## Associations
   embedded_in :apkapp
@@ -29,11 +28,26 @@ class Apkbuild
   ## Methods
   def apk_process
     @apk = Android::Apk.new(self.package.file)
-    self.bundleID = @apk.manifest.package_name
+    begin
+    binding.pry
     self.icon = @apk.icon.values.last
-    self.version = @apk.manifest.version_code
+    rescue
+    self.icon_url = "http://placehold.it/50x50"
+    end
+    self.version = @apk.manifest.version_name
+    if /^@(\w+\/\w+)|(0x[0-9a-fA-F]{8})$/ =~ @apk.manifest.label
     self.packagename = @apk.resource.find(@apk.manifest.label)
+    else
+    self.packagename = @apk.manifest.label
+    end
     self.taken = Time.now
+  end
+
+  def valid_bundleID
+    if self._parent.bundleID == Android::Apk.new(self.package.file).manifest.package_name
+      true
+    end
+      false
   end
 
 end

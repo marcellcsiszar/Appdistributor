@@ -17,12 +17,9 @@
   <tbody>
     <% @project.ipaapps.each do |ipa_app| %>
       <tr>
+        <% if ipa_app.ipabuilds.count>0 %>
         <td>
-          <% if false %>
-            <%= image_tag(ipa_app.ipabuilds.last.icon.thumb('40x40').url, :class => "clearfix img-polaroid") %>
-          <% elsif %>
-            <%= image_tag("http://placehold.it/40x40", :class => "clearfix img-polaroid") %>
-          <% end %>
+          <%= image_tag(ipa_app.ipabuilds.last.icon.thumb('40x40').url, :class => "clearfix img-polaroid") %>
           <blockquote class="inline-table">
             <p>
               <%= link_to ipa_app.name, project_ipaapp_path(:project_id =>@project._id, :id => ipa_app._id) %>
@@ -30,8 +27,20 @@
             <%= ipa_app.bundleID %>
           </blockquote>
         </td>
-        <td></td>
-        <td></td>
+        <td class="cell-buttons"><%= ipa_app.ipabuilds.last.taken %></td>
+        <td class="cell-buttons"><%= ipa_app.ipabuilds.last.version %></td>
+        <% elsif %>
+        <td>
+          <blockquote class="inline-table">
+            <p>
+              <%= link_to ipa_app.name, project_ipaapp_path(:project_id =>@project._id, :id => ipa_app._id) %>
+            </p>
+            <%= ipa_app.bundleID %>
+          </blockquote>
+        </td>
+        <td class="cell-buttons"></td>
+        <td class="cell-buttons"></td>
+        <% end %>
         <td class="cell-buttons"><%= link_to t('application.ipaapps.index.edit'), edit_project_ipaapp_path(:project_id => @project.id,:id => ipa_app._id), :class => 'btn btn-inverse' %> <%= link_to "Delete", project_ipaapp_path(:project_id => @project.id,:id => ipa_app._id),:method => :delete, data: { confirm: t('application.projects.index.sure') }, :class => 'btn btn-danger' %></td>
       </tr>
     <% end %>
@@ -55,8 +64,31 @@
   <tbody>
     <% @project.apkapps.each do |apk_app| %>
       <tr>
-        <td><%= link_to apk_app.name, apk_app %></td>
-        <td><%#= link_to t('application.projects.index.list'), project_path(project._id), :class => 'btn btn-info' %> <%#= link_to t('application.projects.index.edit'), edit_project_path(project), :class => 'btn btn-inverse' %> <%#= link_to "Delete", project, method: :delete, data: { confirm: t('application.projects.index.sure') }, :class => 'btn btn-danger' %></td>
+        <% if apk_app.apkbuilds.count>0 %>
+        <td>
+          <%= image_tag(apk_app.apkbuilds.last.icon.thumb('40x40').url, :class => "clearfix img-polaroid") %>
+          <blockquote class="inline-table">
+            <p>
+              <%= link_to apk_app.name, project_apkapp_path(:project_id =>@project._id, :id => apk_app._id) %>
+            </p>
+            <%= apk_app.bundleID %>
+          </blockquote>
+        </td>
+        <td class="cell-buttons"><%= apk_app.apkbuilds.last.taken %></td>
+        <td class="cell-buttons"><%= apk_app.apkbuilds.last.version %></td>
+        <% elsif %>
+        <td>
+          <blockquote class="inline-table">
+            <p>
+              <%= link_to apk_app.name, project_apkapp_path(:project_id =>@project._id, :id => apk_app._id) %>
+            </p>
+            <%= apk_app.bundleID %>
+          </blockquote>
+        </td>
+        <td class="cell-buttons"></td>
+        <td class="cell-buttons"></td>
+        <% end %>
+        <td class="cell-buttons"><%= link_to t('application.apkapps.index.edit'), edit_project_apkapp_path(:project_id => @project.id,:id => apk_app._id), :class => 'btn btn-inverse' %> <%= link_to "Delete", project_apkapp_path(:project_id => @project.id,:id => apk_app._id),:method => :delete, data: { confirm: t('application.projects.index.sure') }, :class => 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

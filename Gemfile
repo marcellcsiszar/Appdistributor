@@ -83,7 +83,7 @@ gem 'dragonfly', '~>0.9.15'
 gem 'simple_form', '1.4.1'
 
 # Perform some Android analysis
-gem 'ruby_apk', '0.6.0'
+gem 'ruby_apk'
 
 # Perform some iOS analysis
 gem "ipa"

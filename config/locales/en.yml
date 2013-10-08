@@ -15,6 +15,20 @@ en:
         list: "List of builds"
         edit: "Edit"
         delete: "Delete"
+    apkapps:
+      new:
+        title:  "New Android Application"
+      form:
+        label_name: "Name"
+        label_bundleID: "bundleID"
+      edit:
+        title:  "Editing "
+      index:
+        list: "List of builds"
+        edit: "Edit"
+        delete: "Delete"
+    apkbuilds:
+      new:  "Upload build"
     builds:
       new:
         title: "Upload build"

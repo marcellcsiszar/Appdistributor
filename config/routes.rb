@@ -13,7 +13,9 @@ Appdistributor::Application.routes.draw do
     resources :ipaapps, controller: 'ipaapps', :except => [:index] do
       resources :ipabuilds, only: [:new, :create]
     end
-    resources :apkapps, :except => [:index]
+    resources :apkapps, controller: 'apkapps', :except => [:index] do
+      resources :apkbuilds, only: [:new, :create]
+    end
     resource :organization
   end
   resources :organizations do

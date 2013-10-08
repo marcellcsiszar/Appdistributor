@@ -337,7 +337,7 @@ DEPENDENCIES
   rack-cache
   rails (= 4.0.0)
   rspec-rails
-  ruby_apk (= 0.6.0)
+  ruby_apk
   rubyzip (~> 0.9.9)
   sass-rails (~> 4.0.0)
   sdoc
