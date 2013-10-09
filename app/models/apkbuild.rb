@@ -8,6 +8,7 @@ class Apkbuild
   field :icon_uid, :type => String
   field :package_uid, :type => String
   field :taken, :type => Time
+  field :buildnum, :type => String
 
   ## Accessors
   image_accessor :icon do
@@ -28,8 +29,9 @@ class Apkbuild
   ## Methods
   def apk_process
     @apk = Android::Apk.new(self.package.file)
-    begin
     binding.pry
+    self.buildnum = @apk.manifest.version_code
+    begin
     self.icon = @apk.icon.values.last
     rescue
     self.icon_url = "http://placehold.it/50x50"

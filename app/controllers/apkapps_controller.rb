@@ -65,6 +65,6 @@ class ApkappsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apkapp_params
-      params[:apkapp].permit(:name,:bundleID)
+      params[:apkapp].permit(:name,:bundleID,:autonotification)
     end
 end

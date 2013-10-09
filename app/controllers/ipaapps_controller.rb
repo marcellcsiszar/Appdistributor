@@ -65,6 +65,6 @@ class IpaappsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ipaapp_params
-      params[:ipaapp].permit(:name,:bundleID)
+      params[:ipaapp].permit(:name,:bundleID,:autonotification)
     end
 end

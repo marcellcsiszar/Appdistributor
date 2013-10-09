@@ -1,6 +1,8 @@
 en:
   #Manual created
   application:
+    notifications:
+      link_to:  "Notifications"
     ipabuilds:
       new:  "Upload build"
     ipaapps:
@@ -8,7 +10,8 @@ en:
         title:  "New iOS Application"
       form:
         label_name: "Name"
-        label_bundleID: "bundleID"
+        label_bundleID: "bundleID (package name)"
+        label_autonoti: "Automatically send E-mail on upload?"
       edit:
         title:  "Editing "
       index:
@@ -20,7 +23,8 @@ en:
         title:  "New Android Application"
       form:
         label_name: "Name"
-        label_bundleID: "bundleID"
+        label_bundleID: "bundleID (package name)"
+        label_autonoti: "Automatically send E-mail on upload?"
       edit:
         title:  "Editing "
       index:
@@ -45,11 +49,14 @@ en:
         link_new_pr:  "New Project"
         th_ipa: "iOS Applications"
         th_apk: "Android Applications"
-        th_app: "App"
-        th_last_up:  "Last Uploaded"
-        th_last_build:  "Lastest Build"
+        th_app: "Latest builds"
+        th_last_up:  "Uploaded time"
+        th_last_build:  "Build number"
+        th_last_version:  "Version"
+        th_buildnum:  "# of Build"
         th_commands:  "Commands"
         th_name:  "Name of project"
+        th_autoupload:  "Automatic notification?"
         list: "List of applications"
         edit: "Edit"
         sure: "Are you sure?"
@@ -63,9 +70,10 @@ en:
         th_name:  "Name of package"
         th_bundle:  "BundleID"
         th_version: "Version"
-        th_creat: "Creation time"
+        th_buildnum:  "# of Build"
+        th_creat: "Upload time"
         th_platf: "Platform"
-        th_downl: "Download path"
+        th_commands: "Options"
     customers:
       edit:
         title:  "Editing customer"

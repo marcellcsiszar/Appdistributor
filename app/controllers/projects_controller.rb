@@ -19,7 +19,6 @@ class ProjectsController < ApplicationController
     @organization = actual_organization
     @project = Project.new
     @customers = @organization.customers
-    @users = @organization.users
   end
 
   # GET /projects/1/edit
@@ -75,7 +74,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params[:project].permit(:name,:user_ids => [],:customer_ids => [])
+      params[:project].permit(:name,:customer_ids => [])
     end
 
 end

@@ -30,7 +30,7 @@ class User
   validates_presence_of :name, :email
   validates_uniqueness_of :name, :email, :case_sensitive => false
 
-  # 1-N Relationship between Organizations
+  # N-N Relationship between Organizations
   has_and_belongs_to_many :organizations
 
   ### Unused

@@ -7,6 +7,8 @@
 
     <label><%= t('application.ipaapps.form.label_bundleID') %></label>
     <%= f.text_field :bundleID %>
+
+    <label><%= t('application.ipaapps.form.label_autonoti') %> <%= f.check_box :autonotification, :as => :boolean %></label>
   </div>
 
   <div class="actions">

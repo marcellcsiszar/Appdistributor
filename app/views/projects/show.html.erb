@@ -9,6 +9,7 @@
     <tr>
       <th><%= t('application.projects.index.th_app') %></th>
       <th><%= t('application.projects.index.th_last_up') %></th>
+      <th><%= t('application.projects.index.th_last_version') %></th>
       <th><%= t('application.projects.index.th_last_build') %></th>
       <th><%= t('application.projects.index.th_commands') %></th>
     </tr>
@@ -29,6 +30,7 @@
         </td>
         <td class="cell-buttons"><%= ipa_app.ipabuilds.last.taken %></td>
         <td class="cell-buttons"><%= ipa_app.ipabuilds.last.version %></td>
+        <td class="cell-buttons"><%= ipa_app.ipabuilds.last.buildnum %></td>
         <% elsif %>
         <td>
           <blockquote class="inline-table">
@@ -38,6 +40,7 @@
             <%= ipa_app.bundleID %>
           </blockquote>
         </td>
+        <td class="cell-buttons"></td>
         <td class="cell-buttons"></td>
         <td class="cell-buttons"></td>
         <% end %>
@@ -57,6 +60,7 @@
     <tr>
       <th><%= t('application.projects.index.th_app') %></th>
       <th><%= t('application.projects.index.th_last_up') %></th>
+      <th><%= t('application.projects.index.th_last_version') %></th>
       <th><%= t('application.projects.index.th_last_build') %></th>
       <th><%= t('application.projects.index.th_commands') %></th>
     </tr>
@@ -76,6 +80,7 @@
         </td>
         <td class="cell-buttons"><%= apk_app.apkbuilds.last.taken %></td>
         <td class="cell-buttons"><%= apk_app.apkbuilds.last.version %></td>
+        <td class="cell-buttons"><%= apk_app.apkbuilds.last.buildnum %></td>
         <% elsif %>
         <td>
           <blockquote class="inline-table">
@@ -85,6 +90,7 @@
             <%= apk_app.bundleID %>
           </blockquote>
         </td>
+        <td class="cell-buttons"></td>
         <td class="cell-buttons"></td>
         <td class="cell-buttons"></td>
         <% end %>

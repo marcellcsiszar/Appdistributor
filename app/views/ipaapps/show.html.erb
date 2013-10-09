@@ -10,8 +10,9 @@
           <th><%= t('application.projects.show.th_icon') %></th>
           <th><%= t('application.projects.show.th_name') %></th>
           <th><%= t('application.projects.show.th_version') %></th>
+          <th><%= t('application.projects.show.th_buildnum') %></th>
           <th><%= t('application.projects.show.th_creat') %></th>
-          <th><%= t('application.projects.show.th_downl') %></th>
+          <th><%= t('application.projects.show.th_commands') %></th>
       </tr>
   </thead>
   <tbody>
@@ -20,11 +21,14 @@
         <td><%= image_tag(build.icon.png.url, :alt => build.packagename, :class => "clearfix img-polaroid") %></td>
         <td><%= build.packagename %></td>
         <td><%= build.version %></td>
+        <td><%= build.buildnum %></td>
         <td><%= build.taken %></td>
         <td>
           <%= link_to '<button class="btn btn-large"><i class="icon-download"></i></button>'.html_safe, build.package.url, :for => 'fe_text' %>
 
           <button class='d_clip_button btn btn-large' data-clipboard-target='fe_text' data-clipboard-text=<%= "http://#{request.host}:#{request.port}#{build.package.url}" %> title='Click me to copy to clipboard.'><i class="icon-share"></i></button>
+
+          <%= link_to '<button class="btn btn-large btn-inverse">'.html_safe+content_tag(:i, '', class: 'icon-bell')+'</button>'.html_safe, project_ipaapp_ipabuild_notifications_path(:ipaapp_id => @ipaapp._id, :ipabuild_id => build._id), :for => 'fe_text' %>
         </td>
     </tr>
     <% end %>

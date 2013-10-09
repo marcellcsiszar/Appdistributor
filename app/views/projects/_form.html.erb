@@ -13,7 +13,6 @@
     <%= f.text_field :name %>
 
     <%= f.association :customers, :collection => @organization.customers, value_method: :_id, include_blank: false %>
-    <%= f.association :users, :collection => @organization.users, value_method: :_id, include_blank: false %>
   </div>
 
   <div class="actions">

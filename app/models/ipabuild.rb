@@ -8,6 +8,7 @@ class Ipabuild
   field :icon_uid, :type => String
   field :package_uid, :type => String
   field :taken, :type => Time
+  field :buildnum, :type => String
 
   ## Accessors
   image_accessor :icon do
@@ -34,6 +35,7 @@ class Ipabuild
     rescue
     self.icon_url = "http://placehold.it/50x50"
     end
+    self.buildnum = @ipa.info["CFBundleVersion"]
     self.version = @ipa.version
     self.packagename = @ipa.name
     self.taken = Time.now

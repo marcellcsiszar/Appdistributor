@@ -11,10 +11,14 @@ Appdistributor::Application.routes.draw do
   resources :projects do
     resources :customers
     resources :ipaapps, controller: 'ipaapps', :except => [:index] do
-      resources :ipabuilds, only: [:new, :create]
+      resources :ipabuilds, only: [:new, :create] do
+        resources :notifications
+      end
     end
     resources :apkapps, controller: 'apkapps', :except => [:index] do
-      resources :apkbuilds, only: [:new, :create]
+      resources :apkbuilds, only: [:new, :create] do
+        resources :notifications
+      end
     end
     resource :organization
   end
