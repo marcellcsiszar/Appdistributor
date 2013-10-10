@@ -2,7 +2,17 @@ en:
   #Manual created
   application:
     notifications:
+      sidebar:
+        version:  "Version:"
+        buildnum: "Build number:"
+        up_time: "Upload time:"
+        create: "Create Notification"
+      table:
+        name: "Name of Users"
+        updated:  "Updated"
+        status: "Status"
       link_to:  "Notifications"
+      title:  "Notifications"
     ipabuilds:
       new:  "Upload build"
     ipaapps:

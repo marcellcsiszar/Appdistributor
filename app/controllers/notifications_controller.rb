@@ -1,11 +1,12 @@
-class OrganizationsController < ApplicationController
+class NotificationsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :set_notification, only: [:show, :edit, :update, :destroy]
+  before_action :set_build, only: [:show, :index, :create, :new ]
 
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+  #binding.pry
   end
 
   # GET /organizations/1
@@ -15,7 +16,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/new
   def new
-    @organization = Organization.new
+
   end
 
   # GET /organizations/1/edit
@@ -25,10 +26,10 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
-    @organization = Organization.new(organization_params)
+    @notification = Notification.new(notification_params)
     respond_to do |format|
       if @organization.save
-        format.html { redirect_to authenticated_user_root, notice: 'Organization was successfully created.' }
+        format.html { redirect_to authenticated_user_root, notice: 'Notification(s) was successfully created.' }
         format.json { render action: 'show', status: :created, location: @organization }
       else
         format.html { render action: 'new' }
@@ -63,12 +64,24 @@ class OrganizationsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_organization
-      @organization = Organization.find(params[:id])
+    def set_notification
+      if params.has_key?(:apkbuild_id)
+      @notification = actual_project.apkapps.find(params[:apkapp_id]).apkbuilds.find(params[:apkbuild_id]).notifications.find(params[:id])
+      elsif params.has_key?(:ipabuild_id)
+      @notification = actual_project.ipaapps.find(params[:ipaapp_id]).ipabuilds.find(params[:ipabuild_id]).notifications.find(params[:id])
+      end
+    end
+
+    def set_build
+      if params.has_key?(:apkbuild_id)
+      @build = actual_project.apkapps.find(params[:apkapp_id]).apkbuilds.find(params[:apkbuild_id])
+      elsif params.has_key?(:ipabuild_id)
+      @build = actual_project.ipaapps.find(params[:ipaapp_id]).ipabuilds.find(params[:ipabuild_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def organization_params
-      params[:organization].permit(:name,:picture,:picture_uid,:remove_picture,:user_ids => [],:customer_ids => [])
+    def notification_params
+      params[:notification].permit(:user_ids => [],:customer_ids => [])
     end
 end

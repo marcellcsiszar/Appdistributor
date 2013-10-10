@@ -1,0 +1,19 @@
+<div class="span3 sidebar-width ">
+  <div class="well well-small sidebar-nav-fixed">
+    <div class="text-center">
+      <%= image_tag(@build.icon.png.url, :class => "clearfix img-polaroid") %>
+      <h4><%= @build.packagename %></h4>
+    </div>
+    <dl class="dl-horizontal">
+      <dt><%= t('application.notifications.sidebar.version') %></dt>
+      <dd class="text-right"><%= @build.version %></dd>
+      <dt><%= t('application.notifications.sidebar.buildnum') %></dt>
+      <dd class="text-right"><%= @build.buildnum %></dd>
+      <dt><%= t('application.notifications.sidebar.up_time') %></dt>
+      <dd class="text-right"><%= @build.taken.to_s[0..-4] %></dd>
+    </dl>
+    <div class="text-center">
+      <%= link_to '<button class="btn btn-large btn-inverse">'.html_safe+t('application.notifications.sidebar.create')+'</button>'.html_safe, "#" %>
+    </div>
+  </div>
+</div>
