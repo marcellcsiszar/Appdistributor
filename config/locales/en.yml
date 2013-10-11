@@ -6,13 +6,14 @@ en:
         version:  "Version:"
         buildnum: "Build number:"
         up_time: "Upload time:"
-        create: "Create Notification"
+        create: "Send Notification"
       table:
         name: "Name of Users"
         updated:  "Updated"
         status: "Status"
       link_to:  "Notifications"
       title:  "Notifications"
+      new:  "Send Notifications for Users"
     ipabuilds:
       new:  "Upload build"
     ipaapps:
@@ -188,6 +189,8 @@ en:
     title: Appdistributor
     zeroclipboard: '"The download link copied."'
     updated:  " was successfully updated."
+    customer: "Customer"
+    organization: "Organization"
   #Generated
   date:
     abbr_day_names:

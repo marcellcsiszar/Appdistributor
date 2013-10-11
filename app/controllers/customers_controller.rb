@@ -22,6 +22,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+    @organization = actual_organization
   end
 
   # POST /customers
@@ -72,6 +73,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params[:customer].permit(Customer.fields.keys)
+      params[:customer].permit(Customer.fields.keys,:user_ids => [])
     end
 end

@@ -32,6 +32,7 @@ class User
 
   # N-N Relationship between Organizations
   has_and_belongs_to_many :organizations
+  has_many :notifications
 
   ### Unused
   ## Confirmable

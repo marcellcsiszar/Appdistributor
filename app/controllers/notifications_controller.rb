@@ -1,6 +1,5 @@
 class NotificationsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_notification, only: [:show, :edit, :update, :destroy]
   before_action :set_build, only: [:show, :index, :create, :new ]
 
   # GET /organizations
@@ -9,79 +8,43 @@ class NotificationsController < ApplicationController
   #binding.pry
   end
 
-  # GET /organizations/1
-  # GET /organizations/1.json
-  def show
-  end
-
   # GET /organizations/new
   def new
-
-  end
-
-  # GET /organizations/1/edit
-  def edit
+    @notifications = []
+    @customers = Customer.find(actual_project.customer_ids)
+    @organization = actual_organization
   end
 
   # POST /organizations
   # POST /organizations.json
   def create
-    @notification = Notification.new(notification_params)
-    respond_to do |format|
-      if @organization.save
-        format.html { redirect_to authenticated_user_root, notice: 'Notification(s) was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @organization }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
+    binding.pry
+    notifications_params[:user_ids].uniq.each do |user_id|
+      if user_id != ""
+        case params.to_a.last(1)[0][0].first(3)
+        when "apk"
+          Notification.create(:user_id => user_id,:apkbuild_id => params[:apkbuild_id])
+        when "ipa"
+          Notification.create(:user_id => user_id,:ipabuild_id => params[:ipabuild_id])
+        else
+        end
       end
     end
-  end
-
-  # PATCH/PUT /organizations/1
-  # PATCH/PUT /organizations/1.json
-  def update
-    respond_to do |format|
-      if @organization.update(organization_params)
-        format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /organizations/1
-  # DELETE /organizations/1.json
-  def destroy
-    @organization.destroy
-    respond_to do |format|
-      format.html { redirect_to organizations_url }
-      format.json { head :no_content }
-    end
+    redirect_to request.original_url, notice: 'Notification(s) was successfully sended.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_notification
-      if params.has_key?(:apkbuild_id)
-      @notification = actual_project.apkapps.find(params[:apkapp_id]).apkbuilds.find(params[:apkbuild_id]).notifications.find(params[:id])
-      elsif params.has_key?(:ipabuild_id)
-      @notification = actual_project.ipaapps.find(params[:ipaapp_id]).ipabuilds.find(params[:ipabuild_id]).notifications.find(params[:id])
-      end
-    end
-
     def set_build
-      if params.has_key?(:apkbuild_id)
+      case params.to_a.last(1)[0][0].first(3)
+      when "apk"
       @build = actual_project.apkapps.find(params[:apkapp_id]).apkbuilds.find(params[:apkbuild_id])
-      elsif params.has_key?(:ipabuild_id)
+      when "ipa"
       @build = actual_project.ipaapps.find(params[:ipaapp_id]).ipabuilds.find(params[:ipabuild_id])
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def notification_params
-      params[:notification].permit(:user_ids => [],:customer_ids => [])
+    def notifications_params
+      params[:notifications].permit(:user_ids => [])
     end
 end

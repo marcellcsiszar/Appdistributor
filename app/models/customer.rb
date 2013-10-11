@@ -14,7 +14,7 @@ class Customer
 
   ## Associations
   has_and_belongs_to_many :organizations
-  has_many :users
+  has_and_belongs_to_many :users
   belongs_to :project
 
 end

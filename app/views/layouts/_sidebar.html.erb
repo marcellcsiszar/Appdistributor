@@ -13,7 +13,8 @@
       <dd class="text-right"><%= @build.taken.to_s[0..-4] %></dd>
     </dl>
     <div class="text-center">
-      <%= link_to '<button class="btn btn-large btn-inverse">'.html_safe+t('application.notifications.sidebar.create')+'</button>'.html_safe, "#" %>
+      <% @url = request.original_url.to_s.last(3) == "new" ? request.original_url : request.original_url+"/new" %>
+      <%= link_to '<button class="btn btn-large btn-inverse">'.html_safe+t('application.notifications.sidebar.create')+'</button>'.html_safe, @url %>
     </div>
   </div>
 </div>

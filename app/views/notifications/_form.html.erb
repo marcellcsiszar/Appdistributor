@@ -1,0 +1,22 @@
+<%= form_for "notifications[]", :url => request.original_url.to_s[0..-4] do |f| %>
+  <%= hidden_field_tag "notifications[user_ids][]", nil %>
+    <table class="table table-bordered table-condensed">
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr class="warning"><td><strong><%= customer.name %> <%= t('application.customer')%></strong></td></tr>
+          <% User.find(customer.user_ids).each do |user| %>
+            <tr>
+              <td><%= check_box_tag 'notifications[user_ids][]', user._id, :name => 'notifications[user_ids][]' %> <%= user.name %></td>
+            </tr>
+          <% end %>
+        <% end %>
+        <tr class="info"><td><strong><%= @organization.name %> <%= t('application.organization')%></strong></td></tr>
+        <% @organization.users.each do |user| %>
+          <tr>
+              <td><%= check_box_tag 'notifications[user_ids][]', user._id, :name => 'notifications[user_ids][]' %> <%= user.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+<%= submit_tag "Send", :class => "btn btn-success" %>
+<% end %>
