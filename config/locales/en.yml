@@ -14,6 +14,11 @@ en:
       link_to:  "Notifications"
       title:  "Notifications"
       new:  "Send Notifications for Users"
+      ago:  " minute(s) ago"
+      init: "Initialized"
+      sent: "Email sent"
+      read: "Eamil readed"
+      installed:  "App installed"
     ipabuilds:
       new:  "Upload build"
     ipaapps:

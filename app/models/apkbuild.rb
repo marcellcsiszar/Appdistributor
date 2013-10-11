@@ -29,7 +29,6 @@ class Apkbuild
   ## Methods
   def apk_process
     @apk = Android::Apk.new(self.package.file)
-    binding.pry
     self.buildnum = @apk.manifest.version_code
     begin
     self.icon = @apk.icon.values.last

@@ -11,12 +11,25 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="info"><td><strong>1. Customer</strong></td><td></td><td></td></tr>
-        <tr class="warning">
-          <td >Bela</td>
-          <td>5 minutes ago</td>
-          <td>Initialized</td>
+        <% @notifications.each do |notification| %>
+        <tr>
+        <% @user = User.find(notification.user_id) %>
+        <td ><%= @user.name %></td>
+        <td><%= distance_of_time_in_words(notification.updatetime,Time.now) %></td>
+        <% case notification.human_state_name %>
+        <% when "initialized" %>
+        <td><%= t('application.notifications.init') %></td>
+        <% when "email sent"%>
+        <td><%= t('application.notifications.sent') %></td>
+        <% when "email read"%>
+        <td><%= t('application.notifications.read') %></td>
+        <% when "app installed"%>
+        <td><%= t('application.notifications.installed') %></td>
+        <% else %>
+        <td></td>
         </tr>
+        <% end %>
+      <% end %>
       </tbody>
     </table>
 

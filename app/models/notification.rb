@@ -4,11 +4,11 @@ class Notification
   #Fields
   field :state
   field :updatetime, :type => Time
+  field :mailgun_message_id
 
   #Transitions for state field finite state machine
   state_machine :state, initial: :initialized do
-    after_transition any => :initialized, :do => :send_mail
-    event :send do
+    event :delivery_mail do
       transition :initialized => :email_sent
     end
 
@@ -28,20 +28,27 @@ class Notification
 
   #Methods
 
-  def initialize
-    self.update_updatetime
+  def initialize(params)
     super()
+    self.update_updatetime
+    self.ipabuild_id = params[:ipabuild_id] if params.has_key?(:ipabuild_id)
+    self.apkbuild_id = params[:apkbuild_id] if params.has_key?(:apkbuild_id)
+    self.user_id = params[:user_id]
+    self.send_mail
   end
 
   def send_mail
-    @user = User.where(:_id => self.user_id)
+    @user = User.find(self.user_id)
     RestClient.post(messaging_api_end_point,
       from: "myself@testdistributor.mailgun.org",
       to: @user.email,
       subject: "Test mail",
       html: "Test mail"
-    )
-    self.send
+      ){ |response, request, result, &block|
+      self.mailgun_message_id = response.split("\n")[2].split(":")[1].strip[2..-3]
+        binding.pry
+  }
+    self.delivery_mail
     self.update_updatetime
   end
 

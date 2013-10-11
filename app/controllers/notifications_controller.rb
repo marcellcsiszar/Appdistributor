@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-  #binding.pry
+  @notifications = Notification.where(params.to_a.last(1)[0][0].to_sym=>Moped::BSON::ObjectId.from_string((params.to_a.last(1)[0][1])))
   end
 
   # GET /organizations/new
@@ -18,7 +18,6 @@ class NotificationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
-    binding.pry
     notifications_params[:user_ids].uniq.each do |user_id|
       if user_id != ""
         case params.to_a.last(1)[0][0].first(3)
