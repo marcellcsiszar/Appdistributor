@@ -1,18 +1,18 @@
 class Organization
   include Mongoid::Document
 
-  #Fields
+  ## Fields
   field :name, :type => String
   field :picture_uid, :type => String
 
-  #Accessor
+  ## Accessor
   image_accessor :picture
 
-  #Validators
+  ## Validators
   validates_uniqueness_of :name
   validates_presence_of :name
 
-  #Associations
+  ## Relationships
   has_and_belongs_to_many :customers
   has_and_belongs_to_many :users
   embeds_many :projects

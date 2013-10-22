@@ -12,7 +12,6 @@ class Project
   ## Associations
   embedded_in :organization
   has_and_belongs_to_many :customers
-  has_and_belongs_to_many :users
   embeds_many :ipaapps
   embeds_many :apkapps
 

@@ -29,7 +29,7 @@ class NotificationsController < ApplicationController
         end
       end
     end
-    redirect_to request.original_url, notice: 'Notification(s) was successfully sended.'
+    redirect_to request.original_url[0..-2], notice: 'Notification(s) was successfully sended.'
   end
 
   private

@@ -25,6 +25,7 @@ class Ipabuild
 
   ## Associations
   embedded_in :ipaapp
+  has_many :notifications
 
   ## Methods
   def ipa_process

@@ -25,6 +25,7 @@ class Apkbuild
 
   ## Associations
   embedded_in :apkapp
+  has_many :notifications
 
   ## Methods
   def apk_process

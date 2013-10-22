@@ -146,6 +146,9 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-turbolinks (2.0.1)
+      railties (>= 3.1.0)
+      turbolinks
     json (1.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
@@ -189,8 +192,10 @@ GEM
     multi_test (0.0.2)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9)
+    newrelic_rpm (3.6.8.164)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    nprogress-rails (0.1.2.3)
     ntlm-http (0.1.1)
     origin (1.1.0)
     orm_adapter (0.4.0)
@@ -211,6 +216,7 @@ GEM
       rack (>= 0.9.1)
     rack-test (0.6.2)
       rack (>= 1.0)
+    railroady (1.1.1)
     rails (4.0.0)
       actionmailer (= 4.0.0)
       actionpack (= 4.0.0)
@@ -329,15 +335,19 @@ DEPENDENCIES
   ipa
   jbuilder (~> 1.2)
   jquery-rails (= 3.0.4)
+  jquery-turbolinks
   launchy
   less-rails (~> 2.4.2)
   meta_request
   mongoid!
   mongoid-rspec
+  newrelic_rpm
+  nprogress-rails (= 0.1.2.3)
   pry-nav
   pry-rails
   psych
   rack-cache
+  railroady
   rails (= 4.0.0)
   rest-client
   rspec-rails

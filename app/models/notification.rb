@@ -46,7 +46,6 @@ class Notification
       html: "Test mail"
       ){ |response, request, result, &block|
       self.mailgun_message_id = response.split("\n")[2].split(":")[1].strip[2..-3]
-        binding.pry
   }
     self.delivery_mail
     self.update_updatetime

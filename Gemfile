@@ -51,6 +51,8 @@ group :development, :test do
   gem 'factory_girl_rails', "~> 4.0"
   gem 'pry-rails'
   gem 'pry-nav'
+  # ER Diagram generator
+  gem 'railroady'
 end
 
 group :test do
@@ -62,6 +64,9 @@ group :test do
   gem 'guard-rspec'
   gem 'launchy'
 end
+
+# Monitoring with New Relic service
+gem 'newrelic_rpm'
 
 # Devise for auth
 gem 'devise', '3.1.0'
@@ -95,10 +100,16 @@ gem 'ruby_apk'
 gem "ipa"
 
 # Perform Zip commands
-gem 'rubyzip',  "~> 0.9.9"
+gem 'rubyzip', "~> 0.9.9"
 
 # To perform copy-to-clipboard
-gem 'zeroclipboard-rails',  '0.0.7'
+gem 'zeroclipboard-rails', '0.0.7'
+
+# JQuery compatibility issues workround
+gem 'jquery-turbolinks'
+
+# Nice transitions
+gem 'nprogress-rails', '0.1.2.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
