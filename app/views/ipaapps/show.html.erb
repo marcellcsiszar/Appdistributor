@@ -26,9 +26,10 @@
         <td>
           <%= link_to '<button class="btn btn-large"><i class="icon-download"></i></button>'.html_safe, build.package.url, :for => 'fe_text' %>
 
-          <button class='d_clip_button btn btn-large' data-clipboard-target='fe_text' data-clipboard-text=<%= "http://#{request.host}:#{request.port}#{build.package.url}" %> title='Click me to copy to clipboard.'><i class="icon-share"></i></button>
+          <button class='d_clip_button btn btn-large' data-clipboard-target='fe_text' data-clipboard-text=<%= "http://#{request.host}:#{request.port}#{build.package.url}" %> title='<%= t('application.clipboardtooltip') %>'><i class="icon-share"></i></button>
 
           <%= link_to '<button class="btn btn-large btn-inverse">'.html_safe+content_tag(:i, '', class: 'icon-bell')+'</button>'.html_safe, project_ipaapp_ipabuild_notifications_path(:ipaapp_id => @ipaapp._id, :ipabuild_id => build._id), :for => 'fe_text' %>
+
         </td>
     </tr>
     <% end %>

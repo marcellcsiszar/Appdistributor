@@ -77,11 +77,14 @@ gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 # Mongoid said it's need the bson_ext so here it is
 gem 'bson_ext', '1.9.2'
 
-# Bootstrap for SWAG
+# Bootstrap
 group :assets do
 	gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 	gem 'twitter-bootstrap-rails', '2.2.8'
 end
+
+# Replace confirm dialogs
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 # The recommended doorkeeper for OAuth
 gem 'doorkeeper', '~> 0.7.1'

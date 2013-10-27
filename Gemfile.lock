@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ifad/data-confirm-modal.git
+  revision: f9597a2d8403b57cea5b312360c1989344214b9b
+  specs:
+    data-confirm-modal (1.0.1)
+      railties (>= 3.0)
+      twitter-bootstrap-rails (~> 2.0)
+
+GIT
   remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
   revision: 0e88056ac5d58fb0bbd23d3fe929eac01712d964
   branch: 3
@@ -322,6 +330,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   cucumber-rails
+  data-confirm-modal!
   database_cleaner
   debugger
   devise (= 3.1.0)

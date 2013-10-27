@@ -14,6 +14,9 @@ class IpabuildsController < ApplicationController
     @ipabuild.ipa_process
     respond_to do |format|
       if @ipabuild.save
+        @url = "http://"+request.host+@ipabuild.package.url
+        @ipabuild.generate_plist(@url)
+        @ipabuild.save
         format.html { redirect_to project_ipaapp_path(:id => @ipabuild._parent._id), notice: 'Build was successfully created.' }
         format.json { render action: 'show', status: :created, location: @ipabuild }
       else

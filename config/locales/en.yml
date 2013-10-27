@@ -2,6 +2,9 @@ en:
   #Manual created
   application:
     notifications:
+      email:
+        title:  "New build available for "
+        body: "Click here to install the package"
       sidebar:
         version:  "Version:"
         buildnum: "Build number:"
@@ -17,7 +20,7 @@ en:
       ago:  " minute(s) ago"
       init: "Initialized"
       sent: "Email sent"
-      read: "Eamil readed"
+      read: "Email readed"
       installed:  "App installed"
     ipabuilds:
       new:  "Upload build"
@@ -196,6 +199,7 @@ en:
     updated:  " was successfully updated."
     customer: "Customer"
     organization: "Organization"
+    clipboardtooltip: "Click here to copy to clipboard"
   #Generated
   date:
     abbr_day_names:

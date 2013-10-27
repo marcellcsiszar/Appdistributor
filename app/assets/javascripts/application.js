@@ -19,3 +19,4 @@
 //= require bootstrap
 //= require zeroclipboard
 //= require zeroclipboard_page
+//= require data-confirm-modal

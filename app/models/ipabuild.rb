@@ -6,6 +6,7 @@ class Ipabuild
   field :packagename, :type => String
   field :version, :type => String
   field :icon_uid, :type => String
+  field :plist_uid, :type => String
   field :package_uid, :type => String
   field :taken, :type => Time
   field :buildnum, :type => String
@@ -16,6 +17,9 @@ class Ipabuild
   end
   file_accessor :package do
     storage_path{ "#{self._parent._parent.name}/ipaapps/#{self._parent.name}/builds/#{self.version}/#{self.version}" }
+  end
+  file_accessor :plist do
+    storage_path{ "#{self._parent._parent.name}/ipaapps/#{self._parent.name}/builds/#{self.version}/#{self.version}.plist" }
   end
 
   ## Validators
@@ -40,6 +44,43 @@ class Ipabuild
     self.version = @ipa.version
     self.packagename = @ipa.name
     self.taken = Time.now
+  end
+
+  def generate_plist(url)
+    @doctype = '<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>items</key>
+  <array>
+    <dict>
+      <key>assets</key>
+      <array>
+        <dict>
+          <key>kind</key>
+          <string>software-package</string>
+          <key>url</key>
+          <string>'
+    @bi_header = '</string>
+        </dict></array>
+      <key>metadata</key>
+      <dict><key>bundle-identifier</key>
+        <string>'
+    @bv_header = '</string>
+        <key>bundle-version</key>
+        <string>'
+    @title = '</string>
+        <key>kind</key>
+        <string>software</string>
+        <key>title</key>
+        <string>'
+    @footer = '</string>
+      </dict>
+    </dict>
+  </array>
+</dict>
+</plist>'
+    self.plist = @doctype+url+@bi_header+self._parent.bundleID+@bv_header+self.version+@title+self._parent.name+@footer
   end
 
   def valid_bundleID
