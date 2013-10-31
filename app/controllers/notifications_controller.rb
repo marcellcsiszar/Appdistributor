@@ -17,7 +17,6 @@ class NotificationsController < ApplicationController
      data = JSON.parse(data)
      if data["items"].any?
        case data["items"][0]["event"]
-        when "delivered"
         when "opened"
           notification.read
         when "clicked"

@@ -18,7 +18,6 @@ class ProjectsController < ApplicationController
   def new
     @organization = actual_organization
     @project = Project.new
-    @customers = @organization.customers
   end
 
   # GET /projects/1/edit
@@ -29,6 +28,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
+    @organization = actual_organization
     @project = Project.new(project_params)
     actual_organization.projects << @project
     respond_to do |format|

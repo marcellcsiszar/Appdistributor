@@ -4,7 +4,9 @@ Appdistributor::Application.routes.draw do
   resources :users do
     resources :organizations
   end
-  resources :dashboard
+  resources :dashboard do
+    resource :user
+  end
   resources :customers do
     resources :users
   end
@@ -26,6 +28,9 @@ Appdistributor::Application.routes.draw do
     resources :users
     resources :projects
   end
+
+  get '/welcome', to: 'user/dashboard#welcome'
+  get '/welcome/add', to: 'user/dashboard#add'
 
   use_doorkeeper
 

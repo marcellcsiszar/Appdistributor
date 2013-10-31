@@ -1,6 +1,11 @@
 en:
   #Manual created
   application:
+    welcome:
+      choose: "Please choose Organization(s) from existing ones"
+      step2:  "Choose Organization(s)!"
+    dashboard:
+      welcome:  "Welcome back! "
     notifications:
       email:
         title:  "New build available for "

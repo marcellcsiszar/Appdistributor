@@ -25,7 +25,12 @@ class Ipabuild
   ## Validators
   validates_presence_of :package
   validates_property :format, :of => :package, :in => [:ipa]
-  validate :valid_bundleID
+  validate do
+    if self._parent.bundleID != IPA::IPAFile.new(self.package.file).identifier
+      then
+        errors.add(:base)
+    end
+  end
 
   ## Associations
   embedded_in :ipaapp
@@ -41,7 +46,7 @@ class Ipabuild
     self.icon_url = "http://placehold.it/50x50"
     end
     self.buildnum = @ipa.info["CFBundleVersion"]
-    self.version = @ipa.version
+    self.version = if @ipa.info["CFBundleShortVersionString"].nil? then self.buildnum else @ipa.info["CFBundleShortVersionString"] end
     self.packagename = @ipa.name
     self.taken = Time.now
   end
@@ -83,7 +88,8 @@ class Ipabuild
     self.plist = @doctype+url+@bi_header+self._parent.bundleID+@bv_header+self.version+@title+self._parent.name+@footer
   end
 
-  def valid_bundleID
+  def validates_bundleIDs
+    binding.pry
     if self._parent.bundleID == IPA::IPAFile.new(self.package.file).identifier
       return true
     else

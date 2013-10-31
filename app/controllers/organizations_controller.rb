@@ -28,7 +28,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
     respond_to do |format|
       if @organization.save
-        format.html { redirect_to authenticated_user_root, notice: 'Organization was successfully created.' }
+        format.html { redirect_to edit_user_registration_path, notice: 'Organization was successfully created.' }
         format.json { render action: 'show', status: :created, location: @organization }
       else
         format.html { render action: 'new' }

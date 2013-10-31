@@ -17,7 +17,6 @@ class CustomersController < ApplicationController
   def new
     @organization = actual_organization
     @customer = Customer.new()
-    @users = @organization.users
   end
 
   # GET /customers/1/edit
@@ -28,6 +27,7 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
+    @organization = actual_organization
     @customer = Customer.new(customer_params)
     @customer.organization_ids << Moped::BSON::ObjectId.from_string(current_organization)
     respond_to do |format|

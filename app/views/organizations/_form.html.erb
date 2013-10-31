@@ -1,6 +1,17 @@
 <%= simple_form_for @organization,:html => {:multipart => true}  do |f| %>
   <%= f.error_notification %>
 
+  <% if @organization.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@organization.errors.count, "error") %> prohibited this organization from being saved:</h2>
+      <ul>
+      <% @organization.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <form class="well span8">
     <div class="row">
       <div class="span3">
@@ -8,23 +19,10 @@
     <%= f.text_field :name %>
     <%= f.association :customers, :collection => Customer.all, value_method: :_id, include_blank: false %>
     <%= f.association :users, :collection => User.all, value_method: :_id, include_blank: false %>
-      </div>
-
-    <div class="span3">
-    <label><%= t('application.customers.form.label_image') %></label>
-        <%= f.hidden_field :retained_picture %>
-            <%- if @organization.picture_uid? %>
-              <%= image_tag @organization.picture.thumb('200x200').url if @organization.picture_uid %>
-              <%= f.check_box :remove_picture  %><i class="icon-remove"></i>
-            <% end %>
-        <%= f.file_field :picture %>
-    </div>
-    </div>
-
-  <div class="actions">
+      <div class="actions">
     <%= f.button :submit %>
-  </div>
-
+    </div>
+      </div>
   </form>
 
 <% end %>

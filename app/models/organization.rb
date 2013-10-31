@@ -5,9 +5,6 @@ class Organization
   field :name, :type => String
   field :picture_uid, :type => String
 
-  ## Accessor
-  image_accessor :picture
-
   ## Validators
   validates_uniqueness_of :name
   validates_presence_of :name

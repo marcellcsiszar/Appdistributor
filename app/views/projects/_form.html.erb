@@ -3,8 +3,9 @@
         <div class="alert alert-error fade in">
           <a class="close" data-dismiss="alert" href="#">&times;</a>
           <%= f.error_notification %>
-          <%= f.error :name %>
-          <%= f.error :bundleID %>
+          <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+          <% end %>
         </div>
     <% end %>
 

@@ -21,7 +21,12 @@ class Apkbuild
   ## Validators
   validates_presence_of :package
   validates_property :format, :of => :package, :in => [:apk]
-  validate :valid_bundleID
+  validate do
+    if self._parent.bundleID != Android::Apk.new(self.package.file).manifest.package_name
+      then
+        errors.add(:base)
+    end
+  end
 
   ## Associations
   embedded_in :apkapp
@@ -43,13 +48,6 @@ class Apkbuild
     self.packagename = @apk.manifest.label
     end
     self.taken = Time.now
-  end
-
-  def valid_bundleID
-    if self._parent.bundleID == Android::Apk.new(self.package.file).manifest.package_name
-      true
-    end
-      false
   end
 
 end
