@@ -1,7 +1,15 @@
 <div class="container login">
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-horizontal' }) do |f| %>
 <div class="center span4 well text-center">
-  <%= devise_error_messages! %>
+    <% if f.error_notification %>
+        <div class="alert alert-error fade in">
+          <a class="close" data-dismiss="alert" href="#">&times;</a>
+          <%= f.error_notification %>
+          <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+          <% end %>
+        </div>
+    <% end %>
   <legend><%= t('application.devise.registrations.new.title') %></legend>
   <%= f.text_field :name, :autofocus => true, :placeholder => t('application.devise.registrations.new.placeh_name') %>
   <%= f.email_field :email, :placeholder => t('application.devise.registrations.new.placeh_mail') %>

@@ -6,6 +6,7 @@ gem 'rails', '4.0.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+# Use LESS for stylesheets
 gem 'less-rails', '~> 2.4.2'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -41,15 +42,21 @@ group :doc do
 end
 
 group :development, :test do
-	gem "rspec-rails"
+# gem "rspec-rails"
 	gem 'debugger'
+  # Download popular i18n local files
   gem 'i18n_generators'
+  # Replace the default error page for REPL, stack trace and variable inspection
   gem 'better_errors'
+  # Pry extension for better trace and REPL
   gem 'binding_of_caller'
+  # RailsPanel Chrome extension
   gem 'meta_request'
   gem 'psych'
   gem 'factory_girl_rails', "~> 4.0"
+  # Pry support
   gem 'pry-rails'
+  # Pry extension for navigation
   gem 'pry-nav'
   # ER Diagram generator
   gem 'railroady'

@@ -6,7 +6,6 @@ class Project
 
   ## Validators
   validates_uniqueness_of :name
-
   validates_presence_of :name
 
   ## Associations

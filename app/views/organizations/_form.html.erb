@@ -1,16 +1,13 @@
 <%= simple_form_for @organization,:html => {:multipart => true}  do |f| %>
-  <%= f.error_notification %>
-
-  <% if @organization.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@organization.errors.count, "error") %> prohibited this organization from being saved:</h2>
-      <ul>
-      <% @organization.errors.full_messages.each do |msg| %>
+    <% if f.error_notification %>
+        <div class="alert alert-error fade in">
+          <a class="close" data-dismiss="alert" href="#">&times;</a>
+          <%= f.error_notification %>
+          <% @organization.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <% end %>
+        </div>
+    <% end %>
 
   <form class="well span8">
     <div class="row">
