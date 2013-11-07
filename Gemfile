@@ -60,6 +60,14 @@ group :development, :test do
   gem 'pry-nav'
   # ER Diagram generator
   gem 'railroady'
+  # Rubocop for testing metrics
+  gem 'rubocop'
+  # Roodi for testing metrics
+  gem 'roodi'
+  # Best Practices for code metrics
+  gem "rails_best_practices"
+  # Vulnerability scanner
+  gem "brakeman", :require => false
 end
 
 group :test do

@@ -1,5 +1,5 @@
 Appdistributor::Application.routes.draw do
-  devise_for :admins
+  get "download/package/:id", to:'download#package'
   devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations" }
   resources :users do
     resources :organizations

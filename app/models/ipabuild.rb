@@ -24,9 +24,8 @@ class Ipabuild
 
   ## Validators
   validates_presence_of :package
-  validates_property :format, :of => :package, :in => [:ipa]
   validate do
-    if self._parent.bundleID != IPA::IPAFile.new(self.package.file).identifier
+    if self.package.mime_type != "application/octet-stream" || self._parent.bundleID != IPA::IPAFile.new(self.package.file).identifier
       then
         errors.add(:base)
     end
@@ -38,17 +37,19 @@ class Ipabuild
 
   ## Methods
   def ipa_process
-    @ipa = IPA::IPAFile.new(self.package.file);
-    self.packagename = @ipa.name
-    begin
-    self.icon = normalize_png(@ipa.icon)
-    rescue
-    self.icon_url = "http://placehold.it/50x50"
+    if self.package.mime_type == "application/octet-stream"
+      @ipa = IPA::IPAFile.new(self.package.file);
+      self.packagename = @ipa.name
+      begin
+      self.icon = normalize_png(@ipa.icon)
+      rescue
+      self.icon_url = "http://placehold.it/50x50"
+      end
+      self.buildnum = @ipa.info["CFBundleVersion"]
+      self.version = if @ipa.info["CFBundleShortVersionString"].nil? then self.buildnum else @ipa.info["CFBundleShortVersionString"] end
+      self.packagename = @ipa.name
+      self.taken = Time.now
     end
-    self.buildnum = @ipa.info["CFBundleVersion"]
-    self.version = if @ipa.info["CFBundleShortVersionString"].nil? then self.buildnum else @ipa.info["CFBundleShortVersionString"] end
-    self.packagename = @ipa.name
-    self.taken = Time.now
   end
 
   def generate_plist(url)
@@ -88,19 +89,10 @@ class Ipabuild
     self.plist = @doctype+url+@bi_header+self._parent.bundleID+@bv_header+self.version+@title+self._parent.name+@footer
   end
 
-  def validates_bundleIDs
-    binding.pry
-    if self._parent.bundleID == IPA::IPAFile.new(self.package.file).identifier
-      return true
-    else
-      return false
-    end
-  end
-
   def normalize_png(oldPNG)
       newPNG = oldPNG[0...8]
       chunkPos = newPNG.length
-      # For each chunk in the PNG file
+      # For each chunk in PNG
       while chunkPos < oldPNG.length
         # Reading chunk
         chunkLength = oldPNG[chunkPos...chunkPos+4]
@@ -110,20 +102,19 @@ class Ipabuild
         chunkCRC = oldPNG[chunkPos+chunkLength+8...chunkPos+chunkLength+12]
         chunkCRC = chunkCRC.unpack("N")[0]
         chunkPos += chunkLength + 12
-
-        # Parsing the header chunk
+        # Header chunk parsing
         if chunkType == "IHDR"
           width = chunkData[0...4].unpack("N")[0]
           height = chunkData[4...8].unpack("N")[0]
         end
-        # Parsing the image chunk
+        # Image chunk parsing
         if chunkType == "IDAT"
-          # Uncompressing the image chunk
+          # Uncompress the chunk
           inf = Zlib::Inflate.new(-Zlib::MAX_WBITS)
           chunkData = inf.inflate(chunkData)
           inf.finish
           inf.close
-          # Swapping red & blue bytes for each pixel
+          # Swapping red & blue bytes on every pixel
           newdata = ""
           height.times do
             i = newdata.length
@@ -136,8 +127,7 @@ class Ipabuild
               newdata += chunkData[i+3..i+3].to_s
             end
           end
-
-          # Compressing the image chunk
+          # Compressing the chunk
           chunkData = newdata
           chunkData = Zlib::Deflate.deflate( chunkData )
           chunkLength = chunkData.length
@@ -145,7 +135,7 @@ class Ipabuild
           chunkCRC = Zlib.crc32(chunkData, chunkCRC)
           chunkCRC = (chunkCRC + 0x100000000) % 0x100000000
         end
-        # Removing CgBI chunk
+        # Removing the CgBI part
         if chunkType != "CgBI"
           newPNG += [chunkLength].pack("N")
           newPNG += chunkType
@@ -154,7 +144,7 @@ class Ipabuild
           end
           newPNG += [chunkCRC].pack("N")
         end
-        # Stopping the PNG file parsing
+        # Stopping PNG file parse
         if chunkType == "IEND"
           break
         end

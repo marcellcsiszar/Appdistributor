@@ -36,6 +36,7 @@ en:
         label_name: "Name"
         label_bundleID: "bundleID (package name)"
         label_autonoti: "Automatically send E-mail on upload?"
+        label_error: "Wrong BundleID or Extension"
       edit:
         title:  "Editing "
       index:
@@ -200,7 +201,8 @@ en:
       projects: Projects
       account_dot:  "Account:"
     title: Appdistributor
-    zeroclipboard: '"The download link copied."'
+    zeroclipboard_header: 'Clipboard modified!'
+    zeroclipboard_body: 'The download link copied to the clipoard'
     updated:  " was successfully updated."
     customer: "Customer"
     organization: "Organization"

@@ -29,9 +29,9 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       if @organization.save
         format.html { redirect_to edit_user_registration_path, notice: 'Organization was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @organization }
+        format.json { render 'show', status: :created, location: @organization }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
@@ -45,7 +45,7 @@ class OrganizationsController < ApplicationController
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end

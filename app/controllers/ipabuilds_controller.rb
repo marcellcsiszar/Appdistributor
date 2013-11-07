@@ -18,10 +18,10 @@ class IpabuildsController < ApplicationController
         @ipabuild.generate_plist(@url)
         @ipabuild.save
         format.html { redirect_to project_ipaapp_path(:id => @ipabuild._parent._id), notice: 'Build was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @ipabuild }
+        format.json { render 'show', status: :created, location: @ipabuild }
       else
-        flash[:error] = "BundleID error"
-        format.html { render action: 'new' }
+        flash[:error] = "Bad extension or BundleID"
+        format.html { render 'new' }
         format.json { render json: @ipabuild.errors, status: :unprocessable_entity }
       end
     end

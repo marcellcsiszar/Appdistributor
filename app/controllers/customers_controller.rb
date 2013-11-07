@@ -32,10 +32,10 @@ class CustomersController < ApplicationController
     @customer.organization_ids << Moped::BSON::ObjectId.from_string(current_organization)
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to action: 'index', notice: 'Customer was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @customer }
+        format.html { redirect_to 'index', notice: 'Customer was successfully created.' }
+        format.json { render 'show', status: :created, location: @customer }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
@@ -49,7 +49,7 @@ class CustomersController < ApplicationController
         format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end

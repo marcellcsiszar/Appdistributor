@@ -20,14 +20,15 @@ class IpaappsController < ApplicationController
   # POST /ipaapps
   # POST /ipaapps.json
   def create
+    @project = actual_project
     @ipaapp = Ipaapp.new(ipaapp_params)
     actual_project.ipaapps << @ipaapp
     respond_to do |format|
       if @ipaapp.save
         format.html { redirect_to actual_project }
-        format.json { render action: 'show', status: :created, location: @ipaapp }
+        format.json { render 'show', status: :created, location: @ipaapp }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @ipaapp.errors, status: :unprocessable_entity }
       end
     end
@@ -41,7 +42,7 @@ class IpaappsController < ApplicationController
         format.html { redirect_to actual_project, notice: @ipaapp.name+t('application.updated') }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @ipaapp.errors, status: :unprocessable_entity }
       end
     end

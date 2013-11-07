@@ -25,9 +25,9 @@ class ApkappsController < ApplicationController
     respond_to do |format|
       if @apkapp.save
         format.html { redirect_to actual_project }
-        format.json { render action: 'show', status: :created, location: @apkapp }
+        format.json { render 'show', status: :created, location: @apkapp }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @apkapp.errors, status: :unprocessable_entity }
       end
     end
@@ -41,7 +41,7 @@ class ApkappsController < ApplicationController
         format.html { redirect_to actual_project, notice: @apkapp.name+t('application.updated') }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @apkapp.errors, status: :unprocessable_entity }
       end
     end

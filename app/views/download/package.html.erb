@@ -1,0 +1,6 @@
+<h1>Download the package @ the following link</h1>
+<% if @notification.platform == "ipa" %>
+<a href="itms-services://?action=download-manifest&url=<%= @downloadlink %>">install</a>
+<% elsif @notification.platform == "apk" %>
+<a href="<%= @downloadlink %>">install</a>
+<% end %>

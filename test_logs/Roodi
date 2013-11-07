@@ -1,0 +1,8 @@
+marcell.csiszar@marcellonlinux:~/ror_apps/Appdistributor$ roodi "app/**/*.rb"
+app/controllers/notifications_controller.rb:21 - Case statement is missing an else clause.
+app/controllers/notifications_controller.rb:42 - Case statement is missing an else clause.
+app/controllers/notifications_controller.rb:56 - Case statement is missing an else clause.
+app/controllers/notifications_controller.rb:9 - Block cyclomatic complexity is 5.  It should be 4 or less.
+app/controllers/notifications_controller.rb:40 - Block cyclomatic complexity is 5.  It should be 4 or less.
+app/models/ipabuild.rb:55 - Method "generate_plist" has 34 lines.  It should have 20 or less.
+app/models/ipabuild.rb:92 - Method "normalize_png" has 60 lines.  It should have 20 or less.
