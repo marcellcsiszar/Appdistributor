@@ -1,0 +1,37 @@
+
++BRAKEMAN REPORT+
+
+Application path: /home/marcell.csiszar/ror_apps/Appdistributor
+Rails version: 4.0.0
+Brakeman version: 2.2.0
+Started at 2013-11-07 02:43:33 +0100
+Duration: 1.587662695 seconds
+Checks run: BasicAuth, ContentTag, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, EscapeFunction, Evaluation, Execute, FileAccess, FilterSkipping, ForgerySetting, JRubyXML, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, QuoteTableName, Redirect, Render, ResponseSplitting, SQL, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionSettings, SingleQuotes, SkipBeforeFilter, StripTags, SymbolDoS, TranslateBug, UnsafeReflection, ValidationRegex, WithoutProtection, YAMLParsing
+
+
++SUMMARY+
+
++-------------------+-------+
+| Scanned/Reported  | Total |
++-------------------+-------+
+| Controllers       | 14    |
+| Models            | 9     |
+| Templates         | 48    |
+| Errors            | 0     |
+| Security Warnings | 1 (1) |
++-------------------+-------+
+
++-------------------+-------+
+| Warning Type      | Total |
++-------------------+-------+
+| Denial of Service | 1     |
++-------------------+-------+
+
+
++SECURITY WARNINGS+
+
++------------+-------------------------+--------+-------------------+--------------------------------------------------------------------------------------------------------+
+| Confidence | Class                   | Method | Warning Type      | Message                                                                                                |
++------------+-------------------------+--------+-------------------+--------------------------------------------------------------------------------------------------------+
+| High       | NotificationsController | index  | Denial of Service | Symbol conversion from unsafe string (parameter value) near line 6: +params.to_a.last(1)[0][0]+.to_sym |
++------------+-------------------------+--------+-------------------+--------------------------------------------------------------------------------------------------------+

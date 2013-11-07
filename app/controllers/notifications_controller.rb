@@ -3,7 +3,14 @@ class NotificationsController < ApplicationController
   before_action :set_build, only: [:show, :index, :create, :new ]
 
   def index
-  @notifications = Notification.where(params.to_a.last(1)[0][0].to_sym=>Moped::BSON::ObjectId.from_string((params.to_a.last(1)[0][1])))
+  case params.to_a.last(1)[0][0]
+    when "apkbuild_id"
+      @notifications = Notification.where(:apkbuild_id=>Moped::BSON::ObjectId.from_string((params.to_a.last(1)[0][1])))
+    when "ipabuild_id"
+      @notifications = Notification.where(:ipabuild_id=>Moped::BSON::ObjectId.from_string((params.to_a.last(1)[0][1])))
+    else
+      @notifications = []
+  end
     @notifications.each do |notification|
       @days = (Time.now-notification.updatetime)/(24*60*60)
       if @days < 2 then
